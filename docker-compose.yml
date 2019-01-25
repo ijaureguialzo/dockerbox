@@ -1,0 +1,36 @@
+version: "3.5"
+
+services:
+
+  bd:
+    image: mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345Abcde
+      - MYSQL_DATABASE=dockerbox
+      - MYSQL_USER=dockerbox
+      - MYSQL_PASSWORD=12345Abcde
+    volumes:
+      - ./datos/mariadb:/var/lib/mysql
+    expose:
+      - 3306
+
+  web:
+    image: nimmis/apache-php7:latest
+    depends_on:
+      - bd
+    volumes:
+      - ./www:/var/www/html
+    expose:
+      - 80
+    ports:
+      - 80:80
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    depends_on:
+      - bd
+    environment:
+      - PMA_HOST=bd
+      - PMA_PORT=3306
+    ports:
+      - 8080:80
