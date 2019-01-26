@@ -3,7 +3,7 @@ version: "3.5"
 services:
 
   bd:
-    image: mariadb:latest
+    image: mariadb:10.3
     environment:
       - MYSQL_ROOT_PASSWORD=12345Abcde
       - MYSQL_DATABASE=dockerbox
@@ -15,11 +15,11 @@ services:
       - 3306
 
   web:
-    image: nimmis/apache-php7:latest
+    image: webdevops/php-apache-dev:7.3
     depends_on:
       - bd
     volumes:
-      - ./www:/var/www/html
+      - ./www:/app
     expose:
       - 80
     ports:
