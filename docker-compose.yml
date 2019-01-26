@@ -10,7 +10,7 @@ services:
       - MYSQL_USER=dockerbox
       - MYSQL_PASSWORD=12345Abcde
     volumes:
-      - ./datos/mariadb:/var/lib/mysql
+      - datos_mariadb:/var/lib/mysql
     expose:
       - 3306
 
@@ -34,3 +34,6 @@ services:
       - PMA_PORT=3306
     ports:
       - 8080:80
+
+volumes:
+  datos_mariadb:
