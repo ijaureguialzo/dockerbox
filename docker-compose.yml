@@ -32,6 +32,8 @@ services:
     environment:
       - PMA_HOST=bd
       - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=12345Abcde
     ports:
       - 8080:80
 
