@@ -20,8 +20,6 @@ services:
       - bd
     volumes:
       - ./www:/app
-    expose:
-      - 80
     ports:
       - 80:80
 
