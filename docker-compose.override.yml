@@ -3,13 +3,21 @@ version: "3.5"
 services:
 
   bd:
-    env_file: .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DEV_MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DEV_MYSQL_DATABASE}
+      - MYSQL_USER=${DEV_MYSQL_USER}
+      - MYSQL_PASSWORD=${DEV_MYSQL_PASSWORD}
 
   web:
     volumes:
       - ./www:/app
+    ports:
+      - ${DEV_WEB_PORT}:80
 
   phpmyadmin:
     environment:
       - PMA_USER=root
-      - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - PMA_PASSWORD=${DEV_MYSQL_ROOT_PASSWORD}
+    ports:
+      - ${DEV_PHPMYADMIN_PORT}:80

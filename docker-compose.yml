@@ -14,8 +14,6 @@ services:
       context: .
     depends_on:
       - bd
-    ports:
-      - 80:80
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
@@ -24,8 +22,6 @@ services:
     environment:
       - PMA_HOST=bd
       - PMA_PORT=3306
-    ports:
-      - 8080:80
 
 volumes:
   mariadb:
