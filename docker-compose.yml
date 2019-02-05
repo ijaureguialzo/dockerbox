@@ -4,11 +4,6 @@ services:
 
   bd:
     image: mariadb:10.3
-    environment:
-      - MYSQL_ROOT_PASSWORD
-      - MYSQL_DATABASE
-      - MYSQL_USER
-      - MYSQL_PASSWORD
     volumes:
       - mariadb:/var/lib/mysql
     expose:

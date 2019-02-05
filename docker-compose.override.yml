@@ -2,6 +2,9 @@ version: "3.5"
 
 services:
 
+  bd:
+    env_file: .env
+
   web:
     volumes:
       - ./www:/app
