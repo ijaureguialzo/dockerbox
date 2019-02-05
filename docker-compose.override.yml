@@ -9,4 +9,4 @@ services:
   phpmyadmin:
     environment:
       - PMA_USER=root
-      - PMA_PASSWORD=12345Abcde
+      - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
