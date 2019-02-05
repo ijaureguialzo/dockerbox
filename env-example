@@ -1,3 +1,9 @@
+# Versiones de los contenedores
+
+PHP_VERSION=7.3
+MARIADB_VERSION=10.3
+PHPMYADMIN_VERSION=latest
+
 # Variables de configuración para el entorno de desarrollo
 
 DEV_MYSQL_ROOT_PASSWORD=12345Abcde

@@ -1,1 +1,2 @@
-FROM webdevops/php-apache-dev:7.3
+ARG PHP_VERSION
+FROM webdevops/php-apache-dev:$PHP_VERSION

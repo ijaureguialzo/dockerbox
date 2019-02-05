@@ -3,7 +3,7 @@ version: "3.5"
 services:
 
   bd:
-    image: mariadb:10.3
+    image: mariadb:${MARIADB_VERSION}
     volumes:
       - mariadb:/var/lib/mysql
     expose:
@@ -12,11 +12,13 @@ services:
   web:
     build:
       context: .
+      args:
+        - PHP_VERSION=${PHP_VERSION}
     depends_on:
       - bd
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+    image: phpmyadmin/phpmyadmin:${PHPMYADMIN_VERSION}
     depends_on:
       - bd
     environment:
