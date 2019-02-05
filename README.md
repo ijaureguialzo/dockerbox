@@ -6,7 +6,9 @@ Entorno de desarrollo para programación web con Docker.
 
 1. Instalar [Docker](https://www.docker.com/get-started).
 2. Clonar este repositorio.
-3. Arrancar los servicios con `docker-compose up -d`
+3. Arrancar los servicios:
+   - Desarrollo: `docker-compose up -d`
+   - Producción: `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d`
 
 ## Servicios
 

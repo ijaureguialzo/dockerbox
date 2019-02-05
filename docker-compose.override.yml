@@ -1,0 +1,12 @@
+version: "3.5"
+
+services:
+
+  web:
+    volumes:
+      - ./www:/app
+
+  phpmyadmin:
+    environment:
+      - PMA_USER=root
+      - PMA_PASSWORD=12345Abcde

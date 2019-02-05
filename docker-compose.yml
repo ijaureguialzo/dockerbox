@@ -15,11 +15,10 @@ services:
       - 3306
 
   web:
-    image: webdevops/php-apache-dev:7.3
+    build:
+      context: .
     depends_on:
       - bd
-    volumes:
-      - ./www:/app
     ports:
       - 80:80
 
@@ -30,8 +29,6 @@ services:
     environment:
       - PMA_HOST=bd
       - PMA_PORT=3306
-      - PMA_USER=root
-      - PMA_PASSWORD=12345Abcde
     ports:
       - 8080:80
 

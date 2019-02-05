@@ -1,0 +1,2 @@
+FROM webdevops/php-apache-dev:7.3
+COPY ./www /app
