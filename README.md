@@ -16,14 +16,14 @@ Entorno de desarrollo para programación web con Docker.
 ### Servidor web
 
 - Apache, publicando la carpeta `www` en [localhost](http://localhost/).
-- Utiliza la imagen con PHP 7.3 de [WebDevOps](https://hub.docker.com/r/webdevops/php-apache-dev).
+- Utiliza la imagen de [WebDevOps](https://hub.docker.com/r/webdevops/php-apache-dev).
 
 ### Base de datos
 
-- Imagen oficial de MariaDB versión 10.3.
+- Imagen oficial de [MariaDB](https://hub.docker.com/_/mariadb).
 - Crea una base de datos vacía, por defecto `dockerbox`, accesible con el usuario definido en el fichero `.env`.
 
 ## Utilidades
 
-- Imagen oficial de [phpMyAdmin](http://localhost:8080/) accesible con el usuario definido en el fichero `.env`.
+- Imagen oficial de [phpMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin) accesible en [localhost:8080](http://localhost:8080/).
 - Acceso mediante shell: `docker-compose exec web /bin/bash`
