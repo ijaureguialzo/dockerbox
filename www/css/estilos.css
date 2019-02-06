@@ -1,0 +1,42 @@
+body {
+    font-size: 20px;
+    padding: 1em;
+}
+
+h1 {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: #3D4D59;
+}
+
+#logo {
+    width: 200px;
+    position: fixed;
+    right: 1.5em;
+    bottom: 1.5em;
+}
+
+a, a:link {
+    color: #82005E;
+    text-decoration: none;
+}
+
+a, a:hover {
+    color: #82005E;
+    text-decoration: underline;
+}
+
+a, a:active {
+    color: #82005E;
+    text-decoration: none;
+}
+
+a, a:visited {
+    color: #82005E;
+    text-decoration: none;
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px solid #3D4D59;
+    padding-bottom: 1em;
+}
