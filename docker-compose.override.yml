@@ -10,6 +10,9 @@ services:
       - MYSQL_PASSWORD=${DEV_MYSQL_PASSWORD}
 
   web:
+    environment:
+      - php.display_errors=on
+      - php.error_reporting=E_ALL
     volumes:
       - ./www:/app
     ports:
