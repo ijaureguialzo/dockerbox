@@ -20,6 +20,5 @@
     echo $formatter->format($dt);
     ?>
 </p>
-<img id="logo" src="imagenes/logo.svg" alt="Logotipo de Egibide"/>
 </body>
 </html>

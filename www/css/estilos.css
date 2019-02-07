@@ -1,18 +1,14 @@
 body {
     font-size: 20px;
     padding: 1em;
+    background: url("../imagenes/logo.svg") fixed no-repeat;
+    background-size: 200px;
+    background-position: bottom 1.5em right 1.5em;
 }
 
 h1 {
     font-family: 'Helvetica', 'Arial', sans-serif;
     color: #3D4D59;
-}
-
-#logo {
-    width: 200px;
-    position: fixed;
-    right: 1.5em;
-    bottom: 1.5em;
 }
 
 a, a:link {
