@@ -28,3 +28,7 @@ Entorno de desarrollo para programación web con Docker.
 - Imagen oficial de [phpMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin) accesible en [localhost:8080](http://localhost:8080/).
 - Acceso mediante shell: `docker-compose exec web /bin/bash`
 - Si se cambia la versión de PHP del servidor web, actualizar la imagen con: `docker-compose build web`
+
+## Esquema de componentes
+
+![Esquema de componentes de Dockerbox](esquema.png)
