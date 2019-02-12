@@ -9,7 +9,7 @@
 <body>
 <h1>dockerbox</h1>
 <p>Entorno de desarrollo para programación web con Docker.</p>
-<p>Más información en el <a href="https://github.com/Egibide/dockerbox">repositorio de
+<p>Más información en el <a href="https://github.com/egibide/dockerbox">repositorio de
         GitHub</a>.</p>
 <hr>
 <p>
