@@ -29,6 +29,12 @@ Entorno de desarrollo para programación web con Docker.
 - Acceso mediante shell: `docker-compose exec web /bin/bash`
 - Si se cambia la versión de PHP del servidor web, actualizar la imagen con: `docker-compose build web`
 
+## Depurar con Xdebug y PhpStorm
+
+1. Modificar el fichero `.env` añadiendo la dirección IP en la variable `XDEBUG_REMOTE_HOST`.
+2. Habilitar la escucha de conexiones de depuración en PhpStorm: ![Icono de escucha de conexión de Xdebug](debug_listener.png)
+3. Fijar un _breakpoint_ y cargar la página en el navegador.
+
 ## Esquema de componentes
 
 ![Esquema de componentes de Dockerbox](esquema.png)

@@ -25,3 +25,9 @@ PROD_MYSQL_PASSWORD=12345Abcde
 PROD_WEB_PORT=80
 
 PROD_PHPMYADMIN_PORT=8080
+
+# Depuración con Xdebug
+
+# Dirección IP del equipo local
+# En macOS se puede usar este gist para fijarla: https://gist.github.com/ralphschindler/535dc5916ccbd06f53c1b0ee5a868c93
+XDEBUG_REMOTE_HOST=10.254.254.254

@@ -13,6 +13,11 @@ services:
     environment:
       - php.display_errors=on
       - php.error_reporting=E_ALL
+      - XDEBUG_REMOTE_ENABLE=1
+      - XDEBUG_REMOTE_AUTOSTART=1
+      - XDEBUG_REMOTE_CONNECT_BACK=0
+      - XDEBUG_REMOTE_HOST=${XDEBUG_REMOTE_HOST}
+      - XDEBUG_REMOTE_PORT=9000
     volumes:
       - ./www:/app
     ports:
