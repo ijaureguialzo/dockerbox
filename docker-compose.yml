@@ -24,6 +24,8 @@ services:
     environment:
       - PMA_HOST=bd
       - PMA_PORT=3306
+    volumes:
+      - /sessions
 
 volumes:
   mariadb:
