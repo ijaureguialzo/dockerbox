@@ -35,6 +35,17 @@ Entorno de desarrollo para programación web con Docker.
 2. Habilitar la escucha de conexiones de depuración en PhpStorm: ![Icono de escucha de conexión de Xdebug](debug_listener.png)
 3. Fijar un _breakpoint_ y cargar la página en el navegador.
 
+## Habilitar el puerto de MariaDB en localhost
+
+1. Editar el fichero `docker-compose.override.yml` y añadir al servicio `bd`, a la misma altura que `environment`:
+
+	```yml
+	ports:
+	  - 3306:3306
+	```
+
+2. Reiniciar el contenedor `bd` para que se aplique el cambio.
+
 ## Esquema de componentes
 
 ![Esquema de componentes de Dockerbox](esquema.png)
