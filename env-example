@@ -1,3 +1,6 @@
+# Prefijo para los contenedores
+COMPOSE_PROJECT_NAME=dockerbox
+
 # Versiones de los contenedores
 
 PHP_VERSION=7.3
