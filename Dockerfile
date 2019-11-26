@@ -1,2 +1,0 @@
-ARG PHP_VERSION
-FROM webdevops/php-apache-dev:$PHP_VERSION

@@ -2,30 +2,60 @@ version: "3.5"
 
 services:
 
-  bd:
-    image: mariadb:${MARIADB_VERSION}
+  https-portal:
+    image: steveltn/https-portal:1
+    environment:
+      - CLIENT_MAX_BODY_SIZE=1024M
     volumes:
-      - mariadb:/var/lib/mysql
+      - https-portal_certs:/var/lib/https-portal
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - nginx
+      - phpmyadmin
+
+  mariadb:
+    image: mariadb:${MARIADB_VERSION}
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - mariadb_data:/var/lib/mysql
     expose:
       - 3306
 
-  web:
+  nginx:
+    expose:
+      - 80
+    depends_on:
+      - php
+
+  php:
     build:
       context: .
+      dockerfile: Dockerfile.php.dev
       args:
         - PHP_VERSION=${PHP_VERSION}
     depends_on:
-      - bd
+      - mariadb
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:${PHPMYADMIN_VERSION}
+    expose:
+      - 80
     depends_on:
-      - bd
+      - mariadb
     environment:
-      - PMA_HOST=bd
+      - PMA_HOST=mariadb
       - PMA_PORT=3306
+      - PMA_ABSOLUTE_URI=https://phpmyadmin.dockerbox.test
     volumes:
-      - /sessions
+      - phpmyadmin_sessions:/sessions
 
 volumes:
-  mariadb:
+  https-portal_certs:
+  mariadb_data:
+  phpmyadmin_sessions:

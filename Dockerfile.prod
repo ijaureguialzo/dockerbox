@@ -1,3 +1,0 @@
-ARG PHP_VERSION
-FROM webdevops/php-apache:$PHP_VERSION
-COPY ./www /app
