@@ -4,48 +4,68 @@ Entorno de desarrollo para programación web con Docker.
 
 ## Instalación
 
-1. Instalar [Docker](https://www.docker.com/get-started).
+1. Instalar Docker para [Windows y macOS](https://www.docker.com/products/docker-desktop) o [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
 2. Clonar este repositorio.
-3. Copiar el fichero `env-example` a `.env` y cambiar las contraseñas por defecto.
-4. Arrancar los servicios:
-   - Desarrollo: `docker-compose up -d`
-   - Producción: `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build`
+3. Editar el fichero `/etc/hosts` como root y añadir:
+
+	```
+	127.0.0.1	dockerbox.test
+	127.0.0.1	phpmyadmin.dockerbox.test
+	127.0.0.1	maildev.dockerbox.test
+	```
+
+4. En un terminal, situarse en la carpeta `dockerbox`:
+
+	```sh
+	cd dockerbox
+	```
+
+5. Copiar el fichero `env-example` a `.env`:
+
+	```sh
+	cp env-example .env
+	```
+	
+	Es recomendable cambiar las contraseñas por defecto.
+
+6. Arrancar los servicios:
+
+	```sh
+	docker-compose up -d
+	```
 
 ## Servicios
 
-### Servidor web
-
-- Apache, publicando la carpeta `www` en [localhost](http://localhost/).
-- Utiliza la imagen de [WebDevOps](https://hub.docker.com/r/webdevops/php-apache-dev).
-
-### Base de datos
-
-- Imagen oficial de [MariaDB](https://hub.docker.com/_/mariadb).
-- Crea una base de datos vacía, por defecto `dockerbox`, accesible con el usuario definido en el fichero `.env`.
+- [Sitio web](https://dockerbox.test)
+- [phpMyAdmin](https://phpmyadmin.dockerbox.test)
+- [MailDev](https://maildev.dockerbox.test)
 
 ## Utilidades
 
-- Imagen oficial de [phpMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin) accesible en [localhost:8080](http://localhost:8080/).
-- Acceso mediante shell: `docker-compose exec web /bin/bash`
-- Si se cambia la versión de PHP del servidor web, actualizar la imagen con: `docker-compose build web`
+- Acceso mediante shell: 
+
+	```sh
+	docker-compose exec php /bin/sh
+	```
 
 ## Depurar con Xdebug y PhpStorm
 
-1. Modificar el fichero `.env` añadiendo la dirección IP en la variable `XDEBUG_REMOTE_HOST`.
-2. Habilitar la escucha de conexiones de depuración en PhpStorm: ![Icono de escucha de conexión de Xdebug](debug_listener.png)
+1. Modificar el fichero `.env` añadiendo la dirección IP del ordenador en la variable `XDEBUG_REMOTE_HOST`.
+2. Habilitar la escucha de conexiones de depuración en PhpStorm haciendo click en el icono: ![Icono de escucha de conexión de Xdebug](debug_listener.png)
 3. Fijar un _breakpoint_ y cargar la página en el navegador.
 
 ## Habilitar el puerto de MariaDB en localhost
 
-1. Editar el fichero `docker-compose.override.yml` y añadir al servicio `bd`, a la misma altura que `environment`:
+1. Editar el fichero `docker-compose.override.yml` y añadir:
 
 	```yml
-	ports:
-	  - 3306:3306
+	  mariadb:
+	    ports:
+	      - 3306:3306
 	```
 
-2. Reiniciar el contenedor `bd` para que se aplique el cambio.
+2. Recrear el contenedor `mariadb` para que se aplique el cambio:
 
-## Esquema de componentes
-
-![Esquema de componentes de Dockerbox](esquema.png)
+	```sh
+	docker-compose up -d mariadb
+	```
