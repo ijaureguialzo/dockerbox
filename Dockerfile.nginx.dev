@@ -1,0 +1,4 @@
+# Set master image
+FROM nginx:alpine
+
+RUN mkdir -p /var/www/html && chmod 755 /var/www/html

@@ -1,0 +1,110 @@
+ARG PHP_VERSION
+
+# Set master image
+FROM php:${PHP_VERSION}-fpm-alpine
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Install Additional dependencies
+RUN apk update && apk add --no-cache \
+    build-base shadow vim curl \
+    php7 \
+    php7-fpm \
+    php7-common \
+    php7-pdo \
+    php7-pdo_mysql \
+    php7-mysqli \
+    php7-mcrypt \
+    php7-mbstring \
+    php7-xml \
+    php7-openssl \
+    php7-json \
+    php7-phar \
+    php7-zip \
+    php7-gd \
+    php7-dom \
+    php7-session \
+    php7-zlib
+
+# Add and Enable PHP-PDO Extenstions
+RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
+
+# https://stackoverflow.com/a/45976380
+RUN apk add --no-cache --update --virtual buildDeps autoconf \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && apk del buildDeps
+
+RUN apk add php7-intl icu-dev \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install intl
+
+# Remove Cache
+RUN rm -rf /var/cache/apk/*
+
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# --- DEV ---
+
+# https://stackoverflow.com/a/46831699
+RUN apk add --update --no-cache $PHPIZE_DEPS \
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug
+
+RUN apk add --update --no-cache libzip-dev \
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install zip
+
+# https://github.com/docker-library/php/issues/225#issuecomment-226870896
+RUN apk add --update --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
+  docker-php-ext-configure gd \
+    --with-gd \
+    --with-freetype-dir=/usr/include/ \
+    --with-png-dir=/usr/include/ \
+    --with-jpeg-dir=/usr/include/ && \
+  NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
+  docker-php-ext-install -j${NPROC} gd && \
+  apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
+
+RUN apk add --update --no-cache php7-exif \
+    && docker-php-ext-install exif \
+    && docker-php-ext-enable exif
+
+# # https://github.com/zgraveyard/php-7.1-xdebug-alpine
+ENV PHP_XDEBUG_DEFAULT_ENABLE ${PHP_XDEBUG_DEFAULT_ENABLE:-1}
+ENV PHP_XDEBUG_REMOTE_ENABLE ${PHP_XDEBUG_REMOTE_ENABLE:-1}
+ENV PHP_XDEBUG_REMOTE_HOST ${PHP_XDEBUG_REMOTE_HOST:-"127.0.0.1"}
+ENV PHP_XDEBUG_REMOTE_PORT ${PHP_XDEBUG_REMOTE_PORT:-9000}
+ENV PHP_XDEBUG_REMOTE_AUTO_START ${PHP_XDEBUG_REMOTE_AUTO_START:-1}
+ENV PHP_XDEBUG_REMOTE_CONNECT_BACK ${PHP_XDEBUG_REMOTE_CONNECT_BACK:-1}
+ENV PHP_XDEBUG_IDEKEY ${PHP_XDEBUG_IDEKEY:-docker}
+ENV PHP_XDEBUG_PROFILER_ENABLE ${PHP_XDEBUG_PROFILER_ENABLE:-0}
+ENV PHP_XDEBUG_PROFILER_OUTPUT_DIR ${PHP_XDEBUG_PROFILER_OUTPUT_DIR:-"/tmp"}
+
+COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug-dev.ini
+
+# Tamaño de subida máximo en PHP
+COPY php_limits.ini /usr/local/etc/php/conf.d/php_limits.ini
+
+# Remove Cache
+RUN rm -rf /var/cache/apk/*
+
+# https://github.com/npm/uid-number/issues/3
+ENV NPM_CONFIG_UNSAFE_PERM=true
+
+# Node
+RUN apk add --update --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main nodejs-current npm
+
+# Add UID '1000' to www-data
+RUN usermod -u 1000 www-data
+
+RUN chown www-data:www-data /var/www/html
+
+# Change current user to www
+USER www-data
+
+# Expose port 9000 and start php-fpm server
+EXPOSE 9000
+CMD ["php-fpm"]

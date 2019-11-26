@@ -1,36 +1,21 @@
-# Prefijo para los contenedores
-COMPOSE_PROJECT_NAME=dockerbox
-
 # Versiones de los contenedores
 
 PHP_VERSION=7.3
-MARIADB_VERSION=10.3
+MARIADB_VERSION=10.4
 PHPMYADMIN_VERSION=latest
 
 # Variables de configuración para el entorno de desarrollo
 
-DEV_MYSQL_ROOT_PASSWORD=12345Abcde
-DEV_MYSQL_DATABASE=dockerbox
-DEV_MYSQL_USER=dockerbox
-DEV_MYSQL_PASSWORD=12345Abcde
-
-DEV_WEB_PORT=80
-
-DEV_PHPMYADMIN_PORT=8080
-
-# Variables de configuración para el entorno de producción
-
-PROD_MYSQL_ROOT_PASSWORD=12345Abcde
-PROD_MYSQL_DATABASE=dockerbox
-PROD_MYSQL_USER=dockerbox
-PROD_MYSQL_PASSWORD=12345Abcde
-
-PROD_WEB_PORT=80
-
-PROD_PHPMYADMIN_PORT=8080
+MYSQL_ROOT_PASSWORD=12345Abcde
+MYSQL_DATABASE=dockerbox
+MYSQL_USER=dockerbox
+MYSQL_PASSWORD=12345Abcde
 
 # Depuración con Xdebug
 
 # Dirección IP del equipo local
 # En macOS se puede usar este gist para fijarla: https://gist.github.com/ralphschindler/535dc5916ccbd06f53c1b0ee5a868c93
 XDEBUG_REMOTE_HOST=10.254.254.254
+
+# Prefijo para los contenedores
+COMPOSE_PROJECT_NAME=dockerbox
