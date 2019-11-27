@@ -69,3 +69,7 @@ Entorno de desarrollo para programación web con Docker.
 	```sh
 	docker-compose up -d mariadb
 	```
+
+## Estructura de dockerbox
+
+![Diagrama de contenedores de dockerbox](diagrama/diagrama.png)
