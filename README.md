@@ -5,8 +5,7 @@ Entorno de desarrollo para programación web con Docker.
 ## Instalación
 
 1. Instalar Docker para [Windows y macOS](https://www.docker.com/products/docker-desktop) o [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
-2. Clonar este repositorio.
-3. Editar el fichero `/etc/hosts` como root y añadir:
+2. Editar el fichero `/etc/hosts` como root y añadir:
 
 	```
 	127.0.0.1	dockerbox.test
@@ -14,6 +13,7 @@ Entorno de desarrollo para programación web con Docker.
 	127.0.0.1	maildev.dockerbox.test
 	```
 
+3. Descargar este repositorio en formato zip (con el botón _Clone or download_ que hay más arriba) y descomprimirlo.
 4. En un terminal, situarse en la carpeta `dockerbox`:
 
 	```sh
