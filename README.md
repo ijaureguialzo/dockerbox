@@ -14,10 +14,10 @@ Entorno de desarrollo para programación web con Docker.
 	```
 
 3. Descargar este repositorio en formato zip (con el botón _Clone or download_ que hay más arriba) y descomprimirlo.
-4. En un terminal, situarse en la carpeta `dockerbox`:
+4. En un terminal, situarse en la carpeta `dockerbox-master` (si se ha renombrado, la que contenga este archivo `README.md`):
 
 	```sh
-	cd dockerbox
+	cd dockerbox-master
 	```
 
 5. Copiar el fichero `env-example` a `.env`:
