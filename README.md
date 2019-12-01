@@ -16,13 +16,13 @@ Entorno de desarrollo para programación web con Docker.
 3. Descargar este repositorio en formato zip (con el botón _Clone or download_ que hay más arriba) y descomprimirlo.
 4. En un terminal, situarse en la carpeta `dockerbox-master` (si se ha renombrado, la que contenga este archivo `README.md`):
 
-	```sh
+	```
 	cd dockerbox-master
 	```
 
 5. Copiar el fichero `env-example` a `.env`:
 
-	```sh
+	```
 	cp env-example .env
 	```
 	
@@ -30,7 +30,7 @@ Entorno de desarrollo para programación web con Docker.
 
 6. Arrancar los servicios:
 
-	```sh
+	```
 	docker-compose up -d
 	```
 
@@ -44,7 +44,7 @@ Entorno de desarrollo para programación web con Docker.
 
 - Acceso mediante shell: 
 
-	```sh
+	```
 	docker-compose exec php /bin/sh
 	```
 
@@ -66,7 +66,7 @@ Entorno de desarrollo para programación web con Docker.
 
 2. Recrear el contenedor `mariadb` para que se aplique el cambio:
 
-	```sh
+	```
 	docker-compose up -d mariadb
 	```
 
