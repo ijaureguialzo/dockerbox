@@ -22,10 +22,18 @@ Entorno de desarrollo para programación web con Docker.
 
 5. Copiar el fichero `env-example` a `.env`:
 
+	En macOS y Linux:
+	
 	```
 	cp env-example .env
 	```
 	
+	En Windows:
+	
+	```
+	copy env-example .env
+	```
+
 	Es recomendable cambiar las contraseñas por defecto.
 
 6. Arrancar los servicios:
