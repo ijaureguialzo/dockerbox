@@ -5,7 +5,7 @@ Entorno de desarrollo para programación web con Docker.
 ## Instalación
 
 1. Instalar Docker para [Windows y macOS](https://www.docker.com/products/docker-desktop) o [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
-2. Editar el fichero `/etc/hosts` como root y añadir:
+2. Editar como root el fichero `/etc/hosts` (en macOS y Linux) o en [Windows](https://www.adslzone.net/esenciales/windows-10/editar-archivo-host/) y añadir:
 
 	```
 	127.0.0.1	dockerbox.test
