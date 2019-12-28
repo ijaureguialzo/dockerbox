@@ -1,9 +1,8 @@
 help:
-	@echo 'Opciones:'
-	@echo ''
-	@echo 'start / stop / stop-all'
-	@echo 'workspace'
-	@echo 'build / build-nocache'
+	@echo Opciones:
+	@echo start / stop / stop-all
+	@echo workspace
+	@echo build / build-nocache
 
 start:
 	@docker-compose up -d
