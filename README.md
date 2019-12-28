@@ -13,11 +13,16 @@ Entorno de desarrollo para programación web con Docker.
 	127.0.0.1	maildev.dockerbox.test
 	```
 
-3. Descargar este repositorio en formato zip (con el botón _Clone or download_ que hay más arriba) y descomprimirlo.
-4. En un terminal, situarse en la carpeta `dockerbox-master` (si se ha renombrado, la que contenga este archivo `README.md`):
+3. Clonar este repositorio:
 
 	```
-	cd dockerbox-master
+	git clone https://github.com/egibide/dockerbox.git
+	```
+
+4. En un terminal, situarse en la carpeta `dockerbox` (o si se ha renombrado, la que contenga este archivo `README.md`):
+
+	```
+	cd dockerbox
 	```
 
 5. Copiar el fichero `env-example` a `.env`:
@@ -39,9 +44,11 @@ Entorno de desarrollo para programación web con Docker.
 6. Arrancar los servicios:
 
 	```
-	docker-compose up -d
+	make start
 	```
 
+	En Windows, para usar el comando `make`, hay que [instalar Chocolatey](https://chocolatey.org/install) y después instalarlo mediante `choco install make`. 
+	
 ## Servicios
 
 - [Sitio web](https://dockerbox.test)
@@ -50,10 +57,16 @@ Entorno de desarrollo para programación web con Docker.
 
 ## Utilidades
 
-- Acceso mediante shell: 
+- Acceso mediante shell al contenedor de php: 
 
 	```
-	docker-compose exec php /bin/sh
+	make workspace
+	```
+
+- Recrear los contenedores:
+
+	```
+	make build
 	```
 
 ## Depurar con Xdebug y PhpStorm
@@ -75,7 +88,7 @@ Entorno de desarrollo para programación web con Docker.
 2. Recrear el contenedor `mariadb` para que se aplique el cambio:
 
 	```
-	docker-compose up -d mariadb
+	make start
 	```
 
 ## Estructura de dockerbox
