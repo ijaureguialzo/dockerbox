@@ -30,6 +30,8 @@ RUN apk update && apk add --no-cache \
 # Add and Enable PHP-PDO Extenstions
 RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+
 # https://stackoverflow.com/a/45976380
 RUN apk add --no-cache --update --virtual buildDeps autoconf \
     && pecl install redis \
