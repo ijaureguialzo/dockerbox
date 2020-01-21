@@ -1,6 +1,6 @@
 help:
 	@echo Opciones:
-	@echo start / stop / stop-all
+	@echo start / stop / restart / stop-all
 	@echo workspace
 	@echo build / build-nocache
 
@@ -9,6 +9,8 @@ start:
 
 stop:
 	@docker-compose stop
+
+restart: stop start
 
 stop-all:
 	@docker stop `docker ps -aq`
