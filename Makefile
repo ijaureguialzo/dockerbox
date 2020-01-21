@@ -11,7 +11,7 @@ stop:
 	@docker-compose stop
 
 stop-all:
-	@docker stop $(docker ps -aq)
+	@docker stop `docker ps -aq`
 
 workspace:
 	@docker-compose exec php /bin/sh
