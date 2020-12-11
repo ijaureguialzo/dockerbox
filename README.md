@@ -41,7 +41,7 @@ Entorno de desarrollo para programación web con PHP en Docker.
    copy env-example .env
    ```
 
-   Es recomendable cambiar las contraseñas por defecto.
+   > :warning: Es recomendable cambiar las contraseñas por defecto.
 
 6. Arrancar los servicios:
 
@@ -49,8 +49,7 @@ Entorno de desarrollo para programación web con PHP en Docker.
    make start
    ```
 
-   En Windows, para usar el comando `make`, hay que [instalar Chocolatey](https://chocolatey.org/install) y después
-   instalarlo mediante `choco install make`.
+   > En Windows, para usar el comando `make`, hay que [instalar Chocolatey](https://chocolatey.org/install) y después instalarlo mediante `choco install make`.
 
 ## Servicios
 
