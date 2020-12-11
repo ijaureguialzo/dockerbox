@@ -18,7 +18,7 @@ Entorno de desarrollo para programación web con PHP en Docker.
 3. Clonar este repositorio:
 
    ```shell
-   git clone https://github.com/egibide/dockerbox.git
+   git clone https://github.com/ijaureguialzo/dockerbox.git
    ```
 
 4. En un terminal, situarse en la carpeta `dockerbox` (o si se ha renombrado, la que contenga este archivo `README.md`):
