@@ -3,6 +3,8 @@ help:
 	@echo start / stop / restart / stop-all
 	@echo workspace
 	@echo build / build-nocache
+	@echo stats
+	@echo clean
 
 start-command:
 	@docker-compose up -d
@@ -25,6 +27,12 @@ build:
 
 build-nocache:
 	@docker-compose pull && docker-compose build --pull --parallel --no-cache
+
+stats:
+	@docker stats
+
+clean:
+	@docker-compose down -v --remove-orphans
 
 urls:
 	@echo ""
