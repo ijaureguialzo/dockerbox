@@ -72,7 +72,7 @@ Entorno de desarrollo para programación web con Docker.
 ## Depurar con Xdebug y PhpStorm
 
 1. Modificar el fichero `.env` añadiendo la dirección IP del ordenador en la variable `XDEBUG_REMOTE_HOST`.
-2. Habilitar la escucha de conexiones de depuración en PhpStorm haciendo click en el icono: ![Icono de escucha de conexión de Xdebug](debug_listener.png)
+2. Habilitar la escucha de conexiones de depuración en PhpStorm haciendo click en el icono: ![Icono de escucha de conexión de Xdebug](docs/debug_listener.png)
 3. Fijar un _breakpoint_ y cargar la página en el navegador.
 
 ## Habilitar el puerto de MariaDB en localhost
@@ -93,4 +93,4 @@ Entorno de desarrollo para programación web con Docker.
 
 ## Estructura de dockerbox
 
-![Diagrama de contenedores de dockerbox](diagrama/diagrama.png)
+![Diagrama de contenedores de dockerbox](docs/diagrama.png)
