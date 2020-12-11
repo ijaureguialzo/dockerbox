@@ -26,14 +26,11 @@ services:
     environment:
       - php.display_errors=on
       - php.error_reporting=E_ALL
-      - PHP_XDEBUG_REMOTE_ENABLE=1
+      - PHP_XDEBUG_MODE=develop
       - PHP_XDEBUG_REMOTE_HOST=${XDEBUG_REMOTE_HOST}
       - PHP_XDEBUG_REMOTE_PORT=9000
-      - PHP_XDEBUG_REMOTE_AUTO_START=1
-      - PHP_XDEBUG_REMOTE_CONNECT_BACK=0
+      - PHP_XDEBUG_REMOTE_CONNECT_BACK=yes
       - PHP_XDEBUG_IDEKEY=docker
-      - PHP_XDEBUG_PROFILER_ENABLE=0
-      - PHP_XDEBUG_PROFILER_OUTPUT_DIR=/tmp
     volumes:
       - ./www:/var/www/html:delegated
 
