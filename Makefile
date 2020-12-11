@@ -6,10 +6,10 @@ help:
 	@echo stats
 	@echo clean
 
-start-command:
-	@docker-compose up -d
+_start-command:
+	@docker-compose up -d --remove-orphans
 
-start: start-command urls
+start: _start-command _urls
 
 stop:
 	@docker-compose stop
@@ -20,7 +20,7 @@ stop-all:
 	@docker stop `docker ps -aq`
 
 workspace:
-	@docker-compose exec php /bin/sh
+	@docker-compose exec php /bin/bash
 
 build:
 	@docker-compose pull && docker-compose build --pull --parallel
@@ -34,7 +34,7 @@ stats:
 clean:
 	@docker-compose down -v --remove-orphans
 
-urls:
+_urls:
 	@echo ""
 	@echo "--------------------"
 	@echo "\033[92m[Sitio web]\033[0m https://dockerbox.test"
