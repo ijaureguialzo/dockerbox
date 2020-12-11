@@ -98,6 +98,9 @@ ENV NPM_CONFIG_UNSAFE_PERM=true
 # Node
 RUN apk add --update --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main nodejs-current npm
 
+# Utils
+RUN apk add --update --no-cache bash nano
+
 # Add UID '1000' to www-data
 RUN usermod -u 1000 www-data
 
