@@ -80,7 +80,7 @@ Entorno de desarrollo para programación web con PHP en Docker.
 
 ## Habilitar el puerto de MariaDB en localhost
 
-1. Editar el fichero `docker-compose.override.yml` y añadir:
+1. Editar el fichero `docker-compose.yml` y añadir:
 
    ```yaml
      mariadb:

@@ -5,15 +5,25 @@ services:
   https-portal:
     image: steveltn/https-portal:${HTTPS_PORTAL_VERSION}
     environment:
-      - CLIENT_MAX_BODY_SIZE=1024M
+      DOMAINS: >
+        dockerbox.test -> http://nginx:80,
+        phpmyadmin.dockerbox.test -> http://phpmyadmin:80,
+        maildev.dockerbox.test -> http://maildev:80
+      CLIENT_MAX_BODY_SIZE: 1024M
+      STAGE: local
     volumes:
       - https-portal_certs:/var/lib/https-portal
     ports:
       - 80:80
       - 443:443
+    networks:
+      default:
+        aliases:
+          - dockerbox.test
     depends_on:
       - nginx
       - phpmyadmin
+      - maildev
 
   mariadb:
     image: mariadb:${MARIADB_VERSION}
@@ -29,8 +39,13 @@ services:
 
   nginx:
     build:
+      context: .
+      dockerfile: Dockerfile.nginx.dev
       args:
         - NGINX_VERSION=${NGINX_VERSION}
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d/
+      - ./www:/var/www/html:delegated
     expose:
       - 80
     depends_on:
@@ -42,28 +57,44 @@ services:
       dockerfile: Dockerfile.php.dev
       args:
         - PHP_VERSION=${PHP_VERSION}
+    environment:
+      - php.display_errors=on
+      - php.error_reporting=E_ALL
+      - PHP_XDEBUG_MODE=develop
+      - PHP_XDEBUG_REMOTE_HOST=${XDEBUG_REMOTE_HOST}
+      - PHP_XDEBUG_REMOTE_PORT=9000
+      - PHP_XDEBUG_REMOTE_CONNECT_BACK=yes
+      - PHP_XDEBUG_IDEKEY=docker
+    volumes:
+      - ./www:/var/www/html:delegated
     depends_on:
       - mariadb
+      - redis
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:${PHPMYADMIN_VERSION}
-    expose:
-      - 80
-    depends_on:
-      - mariadb
     environment:
       - PMA_HOST=mariadb
       - PMA_PORT=3306
       - PMA_ABSOLUTE_URI=https://phpmyadmin.dockerbox.test
+      - PMA_USER=root
+      - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - phpmyadmin_sessions:/sessions
+    expose:
+      - 80
+    depends_on:
+      - mariadb
 
   redis:
     image: redis:${REDIS_VERSION}-alpine
-    expose:
-      - 6379
     volumes:
       - redis_data:/data
+    expose:
+      - 6379
+
+  maildev:
+    image: maildev/maildev:${MAILDEV_VERSION}
 
 volumes:
   https-portal_certs:
