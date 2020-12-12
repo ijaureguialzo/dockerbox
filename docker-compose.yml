@@ -3,6 +3,7 @@ version: "3.5"
 services:
 
   https-portal:
+    container_name: https-portal
     image: steveltn/https-portal:${HTTPS_PORTAL_VERSION}
     environment:
       DOMAINS: >
@@ -26,6 +27,7 @@ services:
       - maildev
 
   mariadb:
+    container_name: mariadb
     image: mariadb:${MARIADB_VERSION}
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -38,6 +40,7 @@ services:
       - 3306
 
   nginx:
+    container_name: nginx
     build:
       context: .
       dockerfile: Dockerfile.nginx.dev
@@ -52,6 +55,7 @@ services:
       - php
 
   php:
+    container_name: php
     build:
       context: .
       dockerfile: Dockerfile.php.dev
@@ -72,6 +76,7 @@ services:
       - redis
 
   phpmyadmin:
+    container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin:${PHPMYADMIN_VERSION}
     environment:
       - PMA_HOST=mariadb
@@ -87,6 +92,7 @@ services:
       - mariadb
 
   redis:
+    container_name: redis
     image: redis:${REDIS_VERSION}-alpine
     volumes:
       - redis_data:/data
@@ -94,6 +100,7 @@ services:
       - 6379
 
   maildev:
+    container_name: maildev
     image: maildev/maildev:${MAILDEV_VERSION}
 
 volumes:
