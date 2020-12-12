@@ -89,6 +89,10 @@ COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug-dev.ini
 # Tamaño de subida máximo en PHP
 COPY php_limits.ini /usr/local/etc/php/conf.d/php_limits.ini
 
+# Caché de PHP
+RUN docker-php-ext-install opcache
+COPY php_opcache.ini /usr/local/etc/php/conf.d/php_opcache.ini
+
 # Remove Cache
 RUN rm -rf /var/cache/apk/*
 
