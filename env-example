@@ -2,6 +2,7 @@
 
 PHP_VERSION=8.0
 MARIADB_VERSION=10.5
+REDIS_VERSION=6-alpine
 PHPMYADMIN_VERSION=latest
 
 # Variables de configuración para el entorno de desarrollo

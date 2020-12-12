@@ -3,6 +3,7 @@ help:
 	@echo start / stop / restart / stop-all
 	@echo workspace
 	@echo build / build-nocache
+	@echo redis-cli / redis-flush
 	@echo stats
 	@echo clean
 
@@ -27,6 +28,12 @@ build:
 
 build-nocache:
 	@docker-compose pull && docker-compose build --pull --parallel --no-cache
+
+redis-cli:
+	@docker-compose exec redis redis-cli
+
+redis-flush:
+	@docker-compose exec redis redis-cli flushall
 
 stats:
 	@docker stats

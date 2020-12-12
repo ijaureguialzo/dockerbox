@@ -55,7 +55,15 @@ services:
     volumes:
       - phpmyadmin_sessions:/sessions
 
+  redis:
+    image: redis:${REDIS_VERSION}
+    expose:
+      - 6379
+    volumes:
+      - redis_data:/data
+
 volumes:
   https-portal_certs:
   mariadb_data:
   phpmyadmin_sessions:
+  redis_data:
