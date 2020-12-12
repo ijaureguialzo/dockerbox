@@ -8,9 +8,8 @@
 </head>
 <body>
 <h1>dockerbox</h1>
-<p>Entorno de desarrollo para programación web con Docker.</p>
-<p>Más información en el <a href="https://github.com/egibide/dockerbox">repositorio de
-        GitHub</a>.</p>
+<p>Entorno de desarrollo para programación web con PHP en Docker.</p>
+<p>Más información en el <a href="https://github.com/ijaureguialzo/dockerbox">repositorio de GitHub</a>.</p>
 <hr>
 <p>
     <?php
