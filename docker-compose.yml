@@ -59,7 +59,7 @@ services:
       - phpmyadmin_sessions:/sessions
 
   redis:
-    image: redis:${REDIS_VERSION}
+    image: redis:${REDIS_VERSION}-alpine
     expose:
       - 6379
     volumes:
