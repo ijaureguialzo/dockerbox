@@ -6,6 +6,7 @@ REDIS_VERSION=6.0
 PHPMYADMIN_VERSION=latest
 NGINX_VERSION=1.19
 HTTPS_PORTAL_VERSION=1
+MAILDEV_VERSION=latest
 
 # Variables de configuración para el entorno de desarrollo
 

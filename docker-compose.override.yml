@@ -40,4 +40,4 @@ services:
       - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
 
   maildev:
-    image: djfarrelly/maildev
+    image: maildev/maildev:${MAILDEV_VERSION}
