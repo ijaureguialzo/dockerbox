@@ -3,7 +3,7 @@ version: "3.5"
 services:
 
   https-portal:
-    image: steveltn/https-portal:1
+    image: steveltn/https-portal:${HTTPS_PORTAL_VERSION}
     environment:
       - CLIENT_MAX_BODY_SIZE=1024M
     volumes:
@@ -28,6 +28,9 @@ services:
       - 3306
 
   nginx:
+    build:
+      args:
+        - NGINX_VERSION=${NGINX_VERSION}
     expose:
       - 80
     depends_on:
