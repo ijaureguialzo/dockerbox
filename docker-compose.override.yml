@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: Dockerfile.nginx.dev
     volumes:
-      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./nginx/:/etc/nginx/conf.d/
       - ./www:/var/www/html:delegated
 
   php:

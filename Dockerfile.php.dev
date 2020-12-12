@@ -84,14 +84,14 @@ ENV PHP_XDEBUG_IDEKEY ${PHP_XDEBUG_IDEKEY:-docker}
 ENV PHP_XDEBUG_PROFILER_ENABLE ${PHP_XDEBUG_PROFILER_ENABLE:-0}
 ENV PHP_XDEBUG_PROFILER_OUTPUT_DIR ${PHP_XDEBUG_PROFILER_OUTPUT_DIR:-"/tmp"}
 
-COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug-dev.ini
+COPY php/xdebug.ini /usr/local/etc/php/conf.d/xdebug-dev.ini
 
 # Tamaño de subida máximo en PHP
-COPY php_limits.ini /usr/local/etc/php/conf.d/php_limits.ini
+COPY php/limits.ini /usr/local/etc/php/conf.d/php_limits.ini
 
 # Caché de PHP
 RUN docker-php-ext-install opcache
-COPY php_opcache.ini /usr/local/etc/php/conf.d/php_opcache.ini
+COPY php/opcache.ini /usr/local/etc/php/conf.d/php_opcache.ini
 
 # Remove Cache
 RUN rm -rf /var/cache/apk/*
