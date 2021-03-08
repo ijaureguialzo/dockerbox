@@ -2,7 +2,7 @@ help:
 	@echo Opciones:
 	@echo start / stop / restart / stop-all
 	@echo workspace
-	@echo build / build-nocache
+	@echo update
 	@echo redis-cli / redis-flush
 	@echo stats
 	@echo clean
@@ -23,11 +23,10 @@ stop-all:
 workspace:
 	@docker-compose exec php /bin/bash
 
-build:
+_build:
 	@docker-compose pull && docker-compose build --pull --parallel
 
-build-nocache:
-	@docker-compose pull && docker-compose build --pull --parallel --no-cache
+update: _build start
 
 redis-cli:
 	@docker-compose exec redis redis-cli
