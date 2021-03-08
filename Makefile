@@ -1,11 +1,13 @@
 help:
 	@echo Opciones:
+	@echo -------------------
 	@echo start / stop / restart / stop-all
 	@echo workspace
 	@echo update
 	@echo redis-cli / redis-flush
 	@echo stats
 	@echo clean
+	@echo -------------------
 
 _start-command:
 	@docker-compose up -d --remove-orphans
