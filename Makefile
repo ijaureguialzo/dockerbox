@@ -41,9 +41,9 @@ clean:
 	@docker-compose down -v --remove-orphans
 
 _urls:
-	@echo ""
-	@echo "--------------------"
-	@echo "\033[92m[Sitio web]\033[0m https://dockerbox.test"
-	@echo "\033[92m[phpMyAdmin]\033[0m https://phpmyadmin.dockerbox.test"
-	@echo "\033[92m[MailDev]\033[0m https://maildev.dockerbox.test"
-	@echo "--------------------"
+	${info }
+	@echo -------------------
+	@echo [Sitio web] https://dockerbox.test
+	@echo [phpMyAdmin] https://phpmyadmin.dockerbox.test
+	@echo [MailDev] https://maildev.dockerbox.test
+	@echo -------------------
