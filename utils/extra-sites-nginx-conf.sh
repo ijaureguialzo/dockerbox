@@ -13,7 +13,8 @@ if [ -n "$SITES" ]; then
   for LINEA in $SITES; do
     HOST="$(cut -d '|' -f2 <<<"$LINEA")"
 
-    sed "s/EXTRA/${HOST// /-}/g" utils/extra-nginx.conf >"nginx/${HOST// /-}.conf"
+    sed "s/EXTRA_HOST/${HOST// /-}/g" utils/extra-nginx.conf >"nginx/${HOST// /-}.conf"
+    sed -i '' "s/EXTRA_PATH/$HOST/g" "nginx/${HOST// /-}.conf"
 
     if [ ! -f "sites/$HOST/public/index.php" ]; then
       sed -i '' "s|/public||g" "nginx/${HOST// /-}.conf"
