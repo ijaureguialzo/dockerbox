@@ -48,7 +48,7 @@ services:
         - NGINX_VERSION=${NGINX_VERSION}
     volumes:
       - ./nginx/:/etc/nginx/conf.d/
-      - ./www:/var/www/html:delegated
+      - ./sites:/var/www/html:delegated
     expose:
       - 80
     depends_on:
@@ -70,7 +70,7 @@ services:
       - PHP_XDEBUG_REMOTE_CONNECT_BACK=yes
       - PHP_XDEBUG_IDEKEY=docker
     volumes:
-      - ./www:/var/www/html:delegated
+      - ./sites:/var/www/html:delegated
     depends_on:
       - mariadb
       - redis
