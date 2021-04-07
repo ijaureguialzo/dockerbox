@@ -81,4 +81,4 @@ Temporary Items
 
 sites/
 
-*.conf
+nginx/*.conf
