@@ -71,6 +71,25 @@ Entorno de desarrollo para programación web con PHP en Docker.
   make update
   ```
 
+## Añadir un nuevo sitio web
+
+1. Crear una nueva carpeta `sites/nuevo_sitio` con el contenido del nuevo sitio web.
+
+2. Editar como root el fichero `/etc/hosts` (en macOS y Linux) o
+   en [Windows](https://www.adslzone.net/esenciales/windows-10/editar-archivo-host/) y añadir una nueva línea:
+
+   ```text
+   127.0.0.1    nuevo_sitio.dockerbox.test
+   ```
+
+3. Reiniciar los contenedores:
+
+    ```bash
+    make restart
+    ```
+
+4. Acceder al [nuevo sitio](https://nuevo_sitio.dockerbox.test).
+
 ## (Opcional) Depurar con Xdebug y PhpStorm
 
 1. Modificar el fichero `.env` añadiendo la dirección IP del ordenador en la variable `XDEBUG_REMOTE_HOST`.
