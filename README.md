@@ -71,7 +71,7 @@ Entorno de desarrollo para programación web con PHP en Docker.
   make update
   ```
 
-## Añadir un nuevo sitio web
+## (Opcional) Añadir un nuevo sitio web
 
 1. Crear una nueva carpeta `sites/nuevo_sitio` con el contenido del nuevo sitio web.
 
