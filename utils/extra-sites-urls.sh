@@ -1,6 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-SITES=$(ls -1 sites/)
+RUTA="/data"
+
+SITES=$(ls -1 "$RUTA/sites/")
 SITES=${SITES/www/}
 
 if [ -n "$SITES" ]; then
@@ -10,11 +12,8 @@ if [ -n "$SITES" ]; then
   SAVEIFS=$IFS
   IFS=$'\n'
 
-  for LINEA in $SITES; do
-    NOMBRE="$(cut -d '|' -f1 <<<"$LINEA")"
-    HOST="$(cut -d '|' -f2 <<<"$LINEA")"
-
-    echo "[$NOMBRE] https://${HOST// /-}.dockerbox.test"
+  for HOST in $SITES; do
+    echo "[$HOST] https://${HOST// /-}.dockerbox.test"
   done
 
   IFS=$SAVEIFS

@@ -1,19 +1,19 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 EXTRA_SITES=""
 
-SITES=$(ls -1 sites/)
+RUTA="/data"
+
+SITES=$(ls -1 "$RUTA/sites/")
 SITES=${SITES/www/}
 
 SAVEIFS=$IFS
 IFS=$'\n'
 
-for LINEA in $SITES; do
-  HOST="$(cut -d '|' -f2 <<<"$LINEA")"
-
+for HOST in $SITES; do
   EXTRA_SITES="$EXTRA_SITES${HOST// /-}.dockerbox.test -> http://nginx:80,"
 done
 
 IFS=$SAVEIFS
 
-export EXTRA_SITES
+echo "$EXTRA_SITES"

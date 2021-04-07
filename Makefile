@@ -10,8 +10,8 @@ help:
 	@echo -------------------
 
 _start-command:
-	@utils/extra-sites-nginx-conf.sh
-	@source utils/extra-sites-env.sh && docker-compose up -d --remove-orphans
+	@docker run -v $(CURDIR)/:/data -ti alpine /data/utils/extra-sites-nginx-conf.sh
+	@export EXTRA_SITES=`docker run -v $(CURDIR)/:/data -ti alpine /data/utils/extra-sites-env.sh` && docker-compose up -d --remove-orphans
 
 start: _start-command _urls
 
@@ -27,7 +27,7 @@ workspace:
 	@docker-compose exec php /bin/bash
 
 _build:
-	@source utils/extra-sites-env.sh && docker-compose pull && docker-compose build --pull --parallel
+	@export EXTRA_SITES="" && docker-compose pull && docker-compose build --pull --parallel
 
 update: _build start
 
@@ -41,7 +41,7 @@ stats:
 	@docker stats
 
 clean:
-	@source utils/extra-sites-env.sh && docker-compose down -v --remove-orphans
+	@export EXTRA_SITES="" && docker-compose down -v --remove-orphans
 
 _urls:
 	${info }
@@ -49,5 +49,5 @@ _urls:
 	@echo [Sitio web] https://dockerbox.test
 	@echo [phpMyAdmin] https://phpmyadmin.dockerbox.test
 	@echo [MailDev] https://maildev.dockerbox.test
-	@utils/extra-sites-urls.sh
+	@docker run -v $(CURDIR)/:/data -ti alpine /data/utils/extra-sites-urls.sh
 	@echo -------------------
