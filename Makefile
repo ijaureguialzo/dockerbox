@@ -27,7 +27,7 @@ workspace:
 	@docker-compose exec php /bin/bash
 
 _build:
-	@docker-compose pull && docker-compose build --pull --parallel
+	@source utils/extra-sites-env.sh && docker-compose pull && docker-compose build --pull --parallel
 
 update: _build start
 
@@ -41,7 +41,7 @@ stats:
 	@docker stats
 
 clean:
-	@docker-compose down -v --remove-orphans
+	@source utils/extra-sites-env.sh && docker-compose down -v --remove-orphans
 
 _urls:
 	${info }
