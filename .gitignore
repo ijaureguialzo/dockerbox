@@ -80,3 +80,5 @@ Temporary Items
 \.env
 
 sites/
+
+*.conf
