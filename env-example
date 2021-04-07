@@ -23,3 +23,6 @@ XDEBUG_REMOTE_HOST=10.254.254.254
 
 # Prefijo para los contenedores
 COMPOSE_PROJECT_NAME=dockerbox
+
+# Sitios adicionales
+EXTRA_SITES=""
