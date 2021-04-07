@@ -10,7 +10,8 @@ help:
 	@echo -------------------
 
 _start-command:
-	@docker-compose up -d --remove-orphans
+	@utils/extra-sites-nginx-conf.sh
+	@source utils/extra-sites-env.sh && docker-compose up -d --remove-orphans
 
 start: _start-command _urls
 
@@ -48,4 +49,5 @@ _urls:
 	@echo [Sitio web] https://dockerbox.test
 	@echo [phpMyAdmin] https://phpmyadmin.dockerbox.test
 	@echo [MailDev] https://maildev.dockerbox.test
+	@utils/extra-sites-urls.sh
 	@echo -------------------

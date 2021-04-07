@@ -10,6 +10,7 @@ services:
         dockerbox.test -> http://nginx:80,
         phpmyadmin.dockerbox.test -> http://phpmyadmin:80,
         maildev.dockerbox.test -> http://maildev:80,
+        ${EXTRA_SITES}
       CLIENT_MAX_BODY_SIZE: 1024M
       STAGE: local
     volumes:
@@ -48,7 +49,7 @@ services:
         - NGINX_VERSION=${NGINX_VERSION}
     volumes:
       - ./nginx/:/etc/nginx/conf.d/
-      - ./www:/var/www/html:delegated
+      - ./sites:/var/www/html:delegated
     expose:
       - 80
     depends_on:
@@ -70,7 +71,7 @@ services:
       - PHP_XDEBUG_REMOTE_CONNECT_BACK=yes
       - PHP_XDEBUG_IDEKEY=docker
     volumes:
-      - ./www:/var/www/html:delegated
+      - ./sites:/var/www/html:delegated
     depends_on:
       - mariadb
       - redis

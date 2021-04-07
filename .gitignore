@@ -79,4 +79,6 @@ Temporary Items
 
 \.env
 
-www/
+sites/
+
+nginx/*.conf
