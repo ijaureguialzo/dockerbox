@@ -3,9 +3,9 @@
 SITES=$(ls -1 sites/)
 SITES=${SITES/www/}
 
-if [ -n "$SITES" ]; then
+find ./nginx \( ! -name 'default.conf' -a ! -name 'dockerbox.conf' \) -type f -exec rm -f {} +
 
-  find ./nginx/ \( ! -name 'default.conf' -a ! -name 'dockerbox.conf' \) -type f -exec rm -f {} +
+if [ -n "$SITES" ]; then
 
   SAVEIFS=$IFS
   IFS=$'\n'
