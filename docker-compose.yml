@@ -10,6 +10,7 @@ services:
         dockerbox.test -> http://nginx:80,
         phpmyadmin.dockerbox.test -> http://phpmyadmin:80,
         maildev.dockerbox.test -> http://maildev:80,
+        ${EXTRA_SITES}
       CLIENT_MAX_BODY_SIZE: 1024M
       STAGE: local
     volumes:
