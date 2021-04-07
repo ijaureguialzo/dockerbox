@@ -65,10 +65,10 @@ Entorno de desarrollo para programación web con PHP en Docker.
   make workspace
   ```
 
-- Recrear los contenedores:
+- Actualizar los contenedores:
 
   ```shell
-  make build
+  make update
   ```
 
 ## (Opcional) Depurar con Xdebug y PhpStorm
