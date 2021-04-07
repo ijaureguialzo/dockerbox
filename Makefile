@@ -11,7 +11,7 @@ help:
 
 _start-command:
 	@docker run -v $(CURDIR)/:/data alpine /bin/sh /data/utils/extra-sites-nginx-conf.sh
-	@export EXTRA_SITES=`docker run -v $(CURDIR)/:/data alpine /bin/sh /data/utils/extra-sites-env.sh` && docker-compose up -d --remove-orphans
+	@EXTRA_SITES=`docker run -v $(CURDIR)/:/data alpine /bin/sh /data/utils/extra-sites-env.sh` docker-compose up -d --remove-orphans
 
 start: _start-command _urls
 
@@ -27,7 +27,7 @@ workspace:
 	@docker-compose exec php /bin/bash
 
 _build:
-	@export EXTRA_SITES="" && docker-compose pull && docker-compose build --pull --parallel
+	@EXTRA_SITES="" docker-compose pull && docker-compose build --pull --parallel
 
 update: _build start
 
@@ -41,7 +41,7 @@ stats:
 	@docker stats
 
 clean:
-	@export EXTRA_SITES="" && docker-compose down -v --remove-orphans
+	@EXTRA_SITES="" docker-compose down -v --remove-orphans
 
 _urls:
 	${info }
