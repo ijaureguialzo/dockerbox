@@ -29,6 +29,7 @@ workspace:
 	@docker-compose exec php /bin/bash
 
 _build:
+	@docker pull alpine
 	@docker-compose pull && docker-compose build --pull
 
 update: _build start
