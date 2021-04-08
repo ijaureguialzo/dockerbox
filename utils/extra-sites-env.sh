@@ -16,4 +16,4 @@ done
 
 IFS=$SAVEIFS
 
-echo "EXTRA_SITES=\"$EXTRA_SITES\""
+echo "EXTRA_SITES=\"$EXTRA_SITES\"" >>"$RUTA/.env"

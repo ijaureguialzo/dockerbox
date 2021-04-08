@@ -10,9 +10,7 @@ help:
 	@echo -------------------
 
 _start-command:
-	@docker run --rm -v $(CURDIR)/:/data alpine /bin/sh /data/utils/extra-sites-nginx-conf.sh
-	@docker run --rm -v $(CURDIR)/:/data alpine sed -i '/^EXTRA_SITES/d' /data/.env
-	@docker run --rm -v $(CURDIR)/:/data alpine /bin/sh /data/utils/extra-sites-env.sh >> .env
+	@docker run --rm -v $(CURDIR)/:/data alpine /bin/sh -c "/bin/sh /data/utils/extra-sites-nginx-conf.sh && sed -i '/^EXTRA_SITES/d' /data/.env && /bin/sh /data/utils/extra-sites-env.sh"
 	@docker-compose up -d --remove-orphans
 
 start: _start-command _urls
