@@ -12,6 +12,7 @@ services:
         maildev.dockerbox.test -> http://maildev:80,
         ${EXTRA_SITES}
       CLIENT_MAX_BODY_SIZE: 1024M
+      SERVER_NAMES_HASH_BUCKET_SIZE: 1024
       STAGE: local
     volumes:
       - https-portal_certs:/var/lib/https-portal
