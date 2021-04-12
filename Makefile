@@ -10,7 +10,7 @@ help:
 	@echo -------------------
 
 _start-command:
-	@docker run --rm -v $(CURDIR)/:/data alpine /bin/sh -c "/bin/sh /data/utils/extra-sites-nginx-conf.sh && sed -i '/^EXTRA_SITES/d' /data/.env && /bin/sh /data/utils/extra-sites-env.sh"
+	@docker run --rm -v "$(CURDIR)/:/data" alpine /bin/sh -c "/bin/sh /data/utils/extra-sites-nginx-conf.sh && sed -i '/^EXTRA_SITES/d' /data/.env && /bin/sh /data/utils/extra-sites-env.sh"
 	@docker-compose up -d --remove-orphans
 
 start: _start-command _urls
@@ -50,5 +50,5 @@ _urls:
 	@echo [Sitio web] https://dockerbox.test
 	@echo [phpMyAdmin] https://phpmyadmin.dockerbox.test
 	@echo [MailDev] https://maildev.dockerbox.test
-	@docker run --rm -v $(CURDIR)/:/data alpine /bin/sh /data/utils/extra-sites-urls.sh
+	@docker run --rm -v "$(CURDIR)/:/data" alpine /bin/sh /data/utils/extra-sites-urls.sh
 	@echo -------------------
