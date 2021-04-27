@@ -101,7 +101,7 @@ RUN rm -rf /var/cache/apk/*
 ENV NPM_CONFIG_UNSAFE_PERM=true
 
 # Node
-RUN apk add --update --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main nodejs-current npm
+RUN apk add --update --no-cache nodejs-current npm
 
 # Utils
 RUN apk add --update --no-cache bash nano
