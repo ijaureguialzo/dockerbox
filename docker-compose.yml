@@ -63,6 +63,7 @@ services:
       dockerfile: Dockerfile.php.dev
       args:
         - PHP_VERSION=${PHP_VERSION}
+        - ALPINE_VERSION=${ALPINE_VERSION}
     environment:
       - php.display_errors=on
       - php.error_reporting=E_ALL
