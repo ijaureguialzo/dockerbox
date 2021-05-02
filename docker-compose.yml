@@ -58,6 +58,7 @@ services:
 
   php:
     container_name: php
+    hostname: php
     build:
       context: .
       dockerfile: Dockerfile.php.dev
