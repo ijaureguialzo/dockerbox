@@ -82,10 +82,10 @@ Entorno de desarrollo para programación web con PHP en Docker.
    127.0.0.1    nuevo_sitio.dockerbox.test
    ```
 
-3. Reiniciar los contenedores:
+3. Recargar los contenedores web:
 
     ```bash
-    make restart
+    make reload
     ```
 
 4. Acceder al [nuevo sitio](https://nuevo_sitio.dockerbox.test).

@@ -2,6 +2,7 @@ help:
 	@echo Opciones:
 	@echo -------------------
 	@echo start / stop / restart / stop-all
+	@echo reload
 	@echo workspace
 	@echo update
 	@echo redis-cli / redis-flush
@@ -9,11 +10,18 @@ help:
 	@echo clean
 	@echo -------------------
 
-_start-command:
+_extra_sites:
 	@docker run --rm -v "$(CURDIR)/:/data" alpine /bin/sh -c "/bin/sh /data/utils/extra-sites-nginx-conf.sh && sed -i '/^EXTRA_SITES/d' /data/.env && /bin/sh /data/utils/extra-sites-env.sh"
+
+_start-command:
 	@docker-compose up -d --remove-orphans
 
-start: _start-command _urls
+start: _extra_sites _start-command _urls
+
+_stop_web_containers:
+	@docker-compose stop https-portal nginx
+
+reload: _stop_web_containers start
 
 stop:
 	@docker-compose stop
