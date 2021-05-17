@@ -1,7 +1,7 @@
 help:
 	@echo Opciones:
 	@echo -------------------
-	@echo start / stop / restart / stop-all
+	@echo start / start-expose-mariadb / stop / restart / stop-all
 	@echo reload
 	@echo workspace
 	@echo update
@@ -16,7 +16,12 @@ _extra_sites:
 _start-command:
 	@docker-compose up -d --remove-orphans
 
+_start-command-mariadb:
+	@docker-compose -f docker-compose.yml -f docker-compose.mariadb.yml up -d --remove-orphans
+
 start: _extra_sites _start-command _urls
+
+start-expose-mariadb: _extra_sites _start-command-mariadb _urls
 
 _stop_web_containers:
 	@docker-compose stop https-portal nginx

@@ -108,19 +108,11 @@ Entorno de desarrollo para programación web con PHP en Docker.
 
 ## (Opcional) Habilitar el puerto de MariaDB en localhost
 
-1. Editar el fichero `docker-compose.yml` y añadir:
+En vez de arrancar los contenedores con `start` usar `start-expose-mariadb`:
 
-   ```yaml
-     mariadb:
-       ports:
-         - 3306:3306
-   ```
-
-2. Recrear el contenedor `mariadb` para que se aplique el cambio:
-
-   ```shell
-   make start
-   ```
+```shell
+make start-expose-mariadb
+```
 
 ## Estructura de dockerbox
 
