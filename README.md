@@ -20,7 +20,7 @@ Entorno de desarrollo para programación web con PHP en Docker.
    127.0.0.1	maildev.dockerbox.test
    ```
 
-   > En macOS se puede [configurar dnsmasq](https://gist.github.com/ijaureguialzo/ef2af8c909327ff7f98430c8b237c33d)
+   > En macOS y Windows se puede [modificar la resolución de DNS](https://github.com/ijaureguialzo/automatic-test-domains)
    > para que todos los dominios `.test` se redirijan automáticamente a `localhost` y no tener que editar a mano
    > el fichero `/etc/hosts`.
 
