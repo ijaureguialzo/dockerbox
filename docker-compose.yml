@@ -81,7 +81,7 @@ services:
 
   phpmyadmin:
     container_name: phpmyadmin
-    image: phpmyadmin/phpmyadmin:${PHPMYADMIN_VERSION}
+    image: phpmyadmin:${PHPMYADMIN_VERSION}
     environment:
       - PMA_HOST=mariadb
       - PMA_PORT=3306
