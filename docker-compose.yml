@@ -88,6 +88,7 @@ services:
       - PMA_ABSOLUTE_URI=https://phpmyadmin.dockerbox.test
       - PMA_USER=root
       - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - UPLOAD_LIMIT=1g
     volumes:
       - phpmyadmin_sessions:/sessions
     expose:
