@@ -60,6 +60,8 @@ Entorno de desarrollo para programación web con PHP en Docker.
 
    > En Windows, para usar el comando `make`, hay que [instalar Chocolatey](https://chocolatey.org/install) y después instalarlo mediante `choco install make`.
 
+   > :warning: La primera vez tarda unos 30 segundos en generar los certificados digitales y la web dará error hasta que termine.
+
 ## Servicios
 
 - [Sitio web](https://dockerbox.test)
