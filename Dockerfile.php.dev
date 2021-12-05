@@ -8,25 +8,24 @@ FROM php:${PHP_VERSION}-fpm-alpine${ALPINE_VERSION}
 WORKDIR /var/www/html
 
 # Install Additional dependencies
-RUN apk update && apk add --no-cache \
-    build-base shadow vim curl \
-    php7 \
-    php7-fpm \
-    php7-common \
-    php7-pdo \
-    php7-pdo_mysql \
-    php7-mysqli \
-    php7-mcrypt \
-    php7-mbstring \
-    php7-xml \
-    php7-openssl \
-    php7-json \
-    php7-phar \
-    php7-zip \
-    php7-gd \
-    php7-dom \
-    php7-session \
-    php7-zlib
+RUN apk add --no-cache \
+    build-base shadow nano curl \
+    php8 \
+    php8-fpm \
+    php8-common \
+    php8-pdo \
+    php8-pdo_mysql \
+    php8-mysqli \
+    php8-mbstring \
+    php8-xml \
+    php8-openssl \
+    php8-json \
+    php8-phar \
+    php8-zip \
+    php8-gd \
+    php8-dom \
+    php8-session \
+    php8-zlib
 
 # Add and Enable PHP-PDO Extenstions
 RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
@@ -34,12 +33,12 @@ RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
 # https://stackoverflow.com/a/45976380
-RUN apk add --no-cache --update --virtual buildDeps autoconf \
+RUN apk add --no-cache --virtual buildDeps autoconf \
     && pecl install redis \
     && docker-php-ext-enable redis \
     && apk del buildDeps
 
-RUN apk add php7-intl icu-dev \
+RUN apk add --no-cache php8-intl icu-dev \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl
 
@@ -52,17 +51,17 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # --- DEV ---
 
 # https://stackoverflow.com/a/46831699
-RUN apk add --update --no-cache $PHPIZE_DEPS \
+RUN apk add --no-cache $PHPIZE_DEPS \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
-RUN apk add --update --no-cache libzip-dev \
+RUN apk add --no-cache libzip-dev \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip
 
 # https://github.com/docker-library/php/issues/225#issuecomment-226870896
 # https://github.com/docker-library/php/issues/912#issuecomment-559918036
-RUN apk add --update --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
+RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
   docker-php-ext-configure gd \
     --with-freetype \
     --with-jpeg && \
@@ -70,7 +69,7 @@ RUN apk add --update --no-cache freetype libpng libjpeg-turbo freetype-dev libpn
   docker-php-ext-install -j${NPROC} gd && \
   apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
 
-RUN apk add --update --no-cache php7-exif \
+RUN apk add --no-cache php8-exif \
     && docker-php-ext-install exif \
     && docker-php-ext-enable exif
 
