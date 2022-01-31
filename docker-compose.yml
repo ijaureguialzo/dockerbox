@@ -9,6 +9,7 @@ services:
         dockerbox.test -> http://nginx:80,
         phpmyadmin.dockerbox.test -> http://phpmyadmin:80,
         maildev.dockerbox.test -> http://maildev:80,
+        phpredisadmin.dockerbox.test -> http://phpredisadmin:80,
         ${EXTRA_SITES}
       CLIENT_MAX_BODY_SIZE: 1024M
       SERVER_NAMES_HASH_BUCKET_SIZE: 1024
@@ -100,6 +101,17 @@ services:
 
   maildev:
     image: maildev/maildev:${MAILDEV_VERSION}
+
+  phpredisadmin:
+    image: erikdubbelboer/phpredisadmin:${PHPREDISADMIN_VERSION:-latest}
+    environment:
+      - REDIS_1_HOST=redis
+      - REDIS_1_NAME=dockerbox
+      - REDIS_1_PORT=6379
+    expose:
+      - 80
+    depends_on:
+      - redis
 
 volumes:
   https-portal_certs:
