@@ -85,8 +85,6 @@ services:
       - PMA_USER=root
       - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - UPLOAD_LIMIT=1g
-    volumes:
-      - phpmyadmin_sessions:/sessions
     expose:
       - 80
     depends_on:
@@ -116,5 +114,4 @@ services:
 volumes:
   https-portal_certs:
   mariadb_data:
-  phpmyadmin_sessions:
   redis_data:
