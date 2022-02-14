@@ -16,6 +16,7 @@ services:
       STAGE: local
     volumes:
       - https-portal_certs:/var/lib/https-portal
+      - https-portal_logs:/var/log/nginx
     ports:
       - 80:80
       - 443:443
@@ -113,5 +114,6 @@ services:
 
 volumes:
   https-portal_certs:
+  https-portal_logs:
   mariadb_data:
   redis_data:
