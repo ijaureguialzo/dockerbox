@@ -88,6 +88,10 @@ Entorno de desarrollo para programación web con PHP en Docker.
 
 1. Crear una nueva carpeta `sites/nuevo_sitio` con el contenido del nuevo sitio web.
 
+   > El script de arranque busca carpetas dentro del directorio `sites` y las publica en el servidor web:
+   > - Si encuentra un subdirectorio `nuevo_sitio/public` o `nuevo_sitio/laravel/public`, usará esa carpeta como raíz del sitio web.
+   > - Si no, publicará la carpeta `nuevo_sitio` directamente.
+
 2. Editar como root el fichero `/etc/hosts` (en macOS y Linux) o
    en [Windows](https://www.adslzone.net/esenciales/windows-10/editar-archivo-host/) y añadir una nueva línea:
 

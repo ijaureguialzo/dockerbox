@@ -17,8 +17,12 @@ if [ -n "$SITES" ]; then
     sed -i "s/EXTRA_HOST/${HOST// /-}/g" "$RUTA/nginx/${HOST// /-}.conf"
     sed -i "s/EXTRA_PATH/$HOST/g" "$RUTA/nginx/${HOST// /-}.conf"
 
-    if [ ! -f "$RUTA/sites/$HOST/public/index.php" ]; then
-      sed -i "s|/public||g" "$RUTA/nginx/${HOST// /-}.conf"
+    if [ -f "$RUTA/sites/$HOST/laravel/public/index.php" ]; then
+      sed -i "s|/PUBLIC_PATH|/laravel/public|g" "$RUTA/nginx/${HOST// /-}.conf"
+    elif [ -f "$RUTA/sites/$HOST/public/index.php" ]; then
+      sed -i "s|/PUBLIC_PATH|/public|g" "$RUTA/nginx/${HOST// /-}.conf"
+    else
+      sed -i "s|/PUBLIC_PATH||g" "$RUTA/nginx/${HOST// /-}.conf"
     fi
   done
 
