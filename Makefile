@@ -62,6 +62,6 @@ _urls:
 	@echo [Sitio web] https://dockerbox.test
 	@echo [phpMyAdmin] https://phpmyadmin.dockerbox.test
 	@echo [phpRedisAdmin] https://phpredisadmin.dockerbox.test
-	@echo [MailDev] https://maildev.dockerbox.test
+	@echo [MailCatcher] https://mailcatcher.dockerbox.test
 	@docker run --rm -v "$(CURDIR)/:/data" alpine /bin/sh /data/utils/extra-sites-urls.sh
 	@echo -------------------

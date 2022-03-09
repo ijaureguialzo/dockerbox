@@ -8,7 +8,7 @@ PHPMYADMIN_VERSION=latest
 PHPREDISADMIN_VERSION=latest
 NGINX_VERSION=mainline
 HTTPS_PORTAL_VERSION=1
-MAILDEV_VERSION=latest
+MAILCATCHER_VERSION=latest
 
 # Variables de configuración para el entorno de desarrollo
 

@@ -18,7 +18,7 @@ Entorno de desarrollo para programación web con PHP en Docker.
    127.0.0.1	dockerbox.test
    127.0.0.1	phpmyadmin.dockerbox.test
    127.0.0.1	phpredisadmin.dockerbox.test
-   127.0.0.1	maildev.dockerbox.test
+   127.0.0.1	mailcatcher.dockerbox.test
    ```
 
    > En macOS y Windows se puede [modificar la resolución de DNS](https://github.com/ijaureguialzo/automatic-test-domains)
@@ -68,7 +68,7 @@ Entorno de desarrollo para programación web con PHP en Docker.
 - [Sitio web](https://dockerbox.test)
 - [phpMyAdmin](https://phpmyadmin.dockerbox.test)
 - [phpRedisAdmin](https://phpredisadmin.dockerbox.test)
-- [MailDev](https://maildev.dockerbox.test)
+- [MailCatcher](https://mailcatcher.dockerbox.test)
 
 ## Utilidades
 
