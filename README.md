@@ -11,7 +11,20 @@ Entorno de desarrollo para programación web con PHP en Docker.
    > que registrarse en [Docker Hub](https://hub.docker.com) e iniciar sesión con esa cuenta
    > en Docker Desktop.
 
-2. Editar como root el fichero `/etc/hosts` (en macOS y Linux) o
+2. En Windows, instalar [Scoop](https://scoop.sh) usando PowerShell:
+
+   ```powershell
+   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+   Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+   ```
+
+   Y después instalar los comandos necesarios:
+
+   ```powershell
+   scoop install git make
+   ```
+
+3. Editar como root el fichero `/etc/hosts` (en macOS y Linux) o
    en [Windows](https://www.adslzone.net/esenciales/windows-10/editar-archivo-host/) y añadir:
 
    ```text
@@ -25,19 +38,19 @@ Entorno de desarrollo para programación web con PHP en Docker.
    > para que todos los dominios `.test` se redirijan automáticamente a `localhost` y no tener que editar a mano
    > el fichero `/etc/hosts`.
 
-3. Clonar este repositorio:
+4. Clonar este repositorio:
 
    ```shell
    git clone https://github.com/ijaureguialzo/dockerbox.git
    ```
 
-4. En un terminal, situarse en la carpeta `dockerbox` (o si se ha renombrado, la que contenga este archivo `README.md`):
+5. En un terminal, situarse en la carpeta `dockerbox` (o si se ha renombrado, la que contenga este archivo `README.md`):
 
    ```shell
    cd dockerbox
    ```
 
-5. Copiar el fichero `env-example` a `.env`:
+6. Copiar el fichero `env-example` a `.env`:
 
    En macOS y Linux:
 
@@ -53,15 +66,14 @@ Entorno de desarrollo para programación web con PHP en Docker.
 
    > :warning: Es recomendable cambiar las contraseñas por defecto.
 
-6. Arrancar los servicios:
+7. Arrancar los servicios:
 
    ```shell
    make start
    ```
 
-   > En Windows, para usar el comando `make`, hay que [instalar Chocolatey](https://chocolatey.org/install) y después instalarlo mediante `choco install make`.
-
-   > :warning: La primera vez tarda unos 30 segundos en generar los certificados digitales y la web dará error hasta que termine.
+   > :warning: La primera vez tardará varios minutos en crear los contenedores y unos 30 segundos en generar los
+   > certificados digitales; la web dará error hasta que termine.
 
 ## Servicios
 
