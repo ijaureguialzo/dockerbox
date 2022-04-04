@@ -4,11 +4,11 @@ Entorno de desarrollo para programación web con PHP en Docker.
 
 ## Instalación
 
-1. Instalar Docker para [Windows y macOS](https://www.docker.com/products/docker-desktop)
-   o [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
+1. Instalar Docker Desktop para [Windows y macOS](https://www.docker.com/products/docker-desktop)
+   o [Linux](https://docs.docker.com/desktop/linux/).
 
-   > En Windows y macOS, para evitar errores de credenciales al descargar contenedores, hay
-   > que registrarse en [Docker Hub](https://hub.docker.com) e iniciar sesión con esa cuenta
+   > Para evitar errores de credenciales al descargar contenedores, hay que registrarse
+   > en [Docker Hub](https://hub.docker.com) e iniciar sesión con esa cuenta
    > en Docker Desktop.
 
 2. En Windows, instalar [Scoop](https://scoop.sh) usando PowerShell:
