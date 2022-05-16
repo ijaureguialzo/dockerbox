@@ -105,6 +105,8 @@ RUN apk add --update --no-cache nodejs-current npm
 # Utils
 RUN apk add --update --no-cache bash nano
 
+RUN docker-php-ext-install bcmath && docker-php-ext-enable bcmath
+
 # Add UID '1000' to www-data
 RUN usermod -u 1000 www-data
 
