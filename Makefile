@@ -4,7 +4,7 @@ help:
 	@echo start / start-expose-mariadb / stop / restart / stop-all
 	@echo reload
 	@echo workspace
-	@echo update
+	@echo build
 	@echo redis-cli / redis-flush
 	@echo stats
 	@echo clean
@@ -39,10 +39,8 @@ stop-all:
 workspace:
 	@docker-compose exec php /bin/bash
 
-_build:
+build:
 	@docker-compose pull && docker-compose build --pull
-
-update: _build start
 
 redis-cli:
 	@docker-compose exec redis redis-cli
