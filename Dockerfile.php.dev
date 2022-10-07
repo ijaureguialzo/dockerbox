@@ -38,7 +38,7 @@ RUN apk add --no-cache --virtual buildDeps autoconf \
     && docker-php-ext-enable redis \
     && apk del buildDeps
 
-RUN apk add --no-cache php8-intl icu-dev \
+RUN apk add --no-cache php8-intl icu-dev icu-data-full \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl
 
