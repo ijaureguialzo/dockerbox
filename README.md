@@ -35,7 +35,8 @@ Entorno de desarrollo para programación web con PHP en Docker.
    127.0.0.1	mailcatcher.dockerbox.test
    ```
 
-   > En macOS y Windows se puede [modificar la resolución de DNS](https://github.com/ijaureguialzo/automatic-test-domains)
+   > En macOS y Windows se
+   puede [modificar la resolución de DNS](https://github.com/ijaureguialzo/automatic-test-domains)
    > para que todos los dominios `.test` se redirijan automáticamente a `localhost` y no tener que editar a mano
    > el fichero `/etc/hosts`.
 
@@ -104,7 +105,8 @@ Entorno de desarrollo para programación web con PHP en Docker.
 1. Crear una nueva carpeta `sites/nuevo_sitio` con el contenido del nuevo sitio web.
 
    > El script de arranque busca carpetas dentro del directorio `sites` y las publica en el servidor web:
-   > - Si encuentra un subdirectorio `nuevo_sitio/public` o `nuevo_sitio/laravel/public`, usará esa carpeta como raíz del sitio web.
+   > - Si encuentra un subdirectorio `nuevo_sitio/public` o `nuevo_sitio/laravel/public`, usará esa carpeta como raíz
+       del sitio web.
    > - Si no, publicará la carpeta `nuevo_sitio` directamente.
 
    > Independientemente de si hay carpeta `public` o no, el nuevo sitio siempre se llamará `nuevo_sitio.dockerbox.test`.
