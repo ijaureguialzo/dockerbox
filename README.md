@@ -22,7 +22,7 @@ Entorno de desarrollo para programación web con PHP en Docker.
    Y después instalar los comandos necesarios:
 
    ```powershell
-   scoop install git make
+   scoop install make
    ```
 
 3. Editar como root el fichero `/etc/hosts` (en macOS y Linux) o
@@ -44,6 +44,8 @@ Entorno de desarrollo para programación web con PHP en Docker.
    ```shell
    git clone https://github.com/ijaureguialzo/dockerbox.git
    ```
+
+   > Si el comando anterior no funciona, habrá que [instalar Git](https://git-scm.com/downloads) en el sistema.
 
 5. En un terminal, situarse en la carpeta `dockerbox` (o si se ha renombrado, la que contenga este archivo `README.md`):
 
