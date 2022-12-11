@@ -5,6 +5,7 @@ services:
   https-portal:
     image: steveltn/https-portal:${HTTPS_PORTAL_VERSION}
     environment:
+      # noinspection HttpUrlsUsage
       DOMAINS: >
         dockerbox.test -> http://nginx:80,
         phpmyadmin.dockerbox.test -> http://phpmyadmin:80,
@@ -18,8 +19,8 @@ services:
       - https-portal_certs:/var/lib/https-portal
       - https-portal_logs:/var/log/nginx
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     networks:
       default:
         aliases:
