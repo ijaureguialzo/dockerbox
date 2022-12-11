@@ -7,11 +7,8 @@ else
 $(error No se encuentra el fichero .env)
 endif
 
-help:
-	@echo ---------
-	@echo dockerbox
-	@echo ---------
-	@echo 
+help: _header
+	${info }
 	@echo Opciones:
 	@echo --------------------------------------------------------
 	@echo start / start-expose-mariadb / stop / restart / stop-all
@@ -22,6 +19,11 @@ help:
 	@echo stats
 	@echo clean
 	@echo --------------------------------------------------------
+
+_header:
+	@echo ---------
+	@echo dockerbox
+	@echo ---------
 
 _extra_sites:
 	@docker run --rm -v "$(CURDIR)/:/data" alpine:${ALPINE_VERSION} /bin/sh -c "/bin/sh /data/utils/extra-sites-nginx-conf.sh && sed -i '/^EXTRA_SITES/d' /data/.env && /bin/sh /data/utils/extra-sites-env.sh"
@@ -67,8 +69,9 @@ stats:
 clean:
 	@docker compose down -v --remove-orphans
 
-_urls:
+_urls: _header
 	${info }
+	@echo Sitios disponibles:
 	@echo --------------------------------------------------------
 	@echo [Sitio web] https://dockerbox.test
 	@echo [phpMyAdmin] https://phpmyadmin.dockerbox.test
