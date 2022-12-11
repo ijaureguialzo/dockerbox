@@ -9,7 +9,7 @@ WORKDIR /var/www/html
 
 # Install Additional dependencies
 RUN apk add --no-cache \
-    build-base shadow nano curl \
+    build-base linux-headers shadow nano curl \
     php8 \
     php8-fpm \
     php8-common \
