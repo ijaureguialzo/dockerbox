@@ -8,20 +8,20 @@ $(error No se encuentra el fichero .env)
 endif
 
 help:
-	@echo "---------"
-	@echo "dockerbox"
-	@echo "---------"
-	@echo ""
-	@echo "Opciones:"
-	@echo "--------------------------------------------------------"
-	@echo "start / start-expose-mariadb / stop / restart / stop-all"
-	@echo "reload"
-	@echo "workspace"
-	@echo "build"
-	@echo "redis-cli / redis-flush"
-	@echo "stats"
-	@echo "clean"
-	@echo "--------------------------------------------------------"
+	@echo ---------
+	@echo dockerbox
+	@echo ---------
+	@echo 
+	@echo Opciones:
+	@echo --------------------------------------------------------
+	@echo start / start-expose-mariadb / stop / restart / stop-all
+	@echo reload
+	@echo workspace
+	@echo build
+	@echo redis-cli / redis-flush
+	@echo stats
+	@echo clean
+	@echo --------------------------------------------------------
 
 _extra_sites:
 	@docker run --rm -v "$(CURDIR)/:/data" alpine:${ALPINE_VERSION} /bin/sh -c "/bin/sh /data/utils/extra-sites-nginx-conf.sh && sed -i '/^EXTRA_SITES/d' /data/.env && /bin/sh /data/utils/extra-sites-env.sh"
@@ -69,10 +69,10 @@ clean:
 
 _urls:
 	${info }
-	@echo "--------------------------------------------------------"
-	@echo "[Sitio web] https://dockerbox.test"
-	@echo "[phpMyAdmin] https://phpmyadmin.dockerbox.test"
-	@echo "[phpRedisAdmin] https://phpredisadmin.dockerbox.test"
-	@echo "[MailCatcher] https://mailcatcher.dockerbox.test"
+	@echo --------------------------------------------------------
+	@echo [Sitio web] https://dockerbox.test
+	@echo [phpMyAdmin] https://phpmyadmin.dockerbox.test
+	@echo [phpRedisAdmin] https://phpredisadmin.dockerbox.test
+	@echo [MailCatcher] https://mailcatcher.dockerbox.test
 	@docker run --rm -v "$(CURDIR)/:/data" alpine:${ALPINE_VERSION} /bin/sh /data/utils/extra-sites-urls.sh
-	@echo "--------------------------------------------------------"
+	@echo --------------------------------------------------------
