@@ -46,7 +46,8 @@ Entorno de desarrollo para programación web con PHP en Docker.
    git clone https://github.com/ijaureguialzo/dockerbox.git
    ```
 
-   > Si el comando anterior no funciona, habrá que [instalar Git](https://git-scm.com/downloads) en el sistema.
+   > Si el comando anterior no funciona, habrá que [instalar Git](https://git-scm.com/downloads) en el sistema (en
+   Windows también se puede usar Scoop, pero solo si no está instalado ya).
 
 5. En un terminal, situarse en la carpeta `dockerbox` (o si se ha renombrado, la que contenga este archivo `README.md`):
 
@@ -97,7 +98,7 @@ Entorno de desarrollo para programación web con PHP en Docker.
 - Actualizar los contenedores:
 
   ```shell
-  make update
+  make build
   ```
 
 ## (Opcional) Añadir un nuevo sitio web
