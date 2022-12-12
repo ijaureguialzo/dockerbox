@@ -49,7 +49,7 @@ stop:
 restart: stop start
 
 stop-all:
-	@docker stop `docker ps -aq`
+	@docker stop $(shell docker ps -aq)
 
 workspace:
 	@docker compose exec php /bin/bash
