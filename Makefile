@@ -3,6 +3,7 @@
 ifneq (,$(wildcard ./.env))
     include .env
     export
+	unexport EXTRA_SITES
 else
 $(error No se encuentra el fichero .env)
 endif
