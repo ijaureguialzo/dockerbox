@@ -128,7 +128,9 @@ Entorno de desarrollo para programación web con PHP en Docker.
 
 ## (Opcional) Depurar con Xdebug y PhpStorm
 
-1. Modificar el fichero `.env` añadiendo la dirección IP del ordenador en la variable `XDEBUG_REMOTE_HOST`.
+1. Instalar
+   la [extensión para el navegador](https://www.jetbrains.com/help/phpstorm/2022.3/browser-debugging-extensions.html) y
+   activar la depuración.
 2. Habilitar la escucha de conexiones de depuración en PhpStorm haciendo click en el
    icono: <img src="docs/debug_listener.png" width="26" alt="Icono de escucha de conexión de Xdebug" />
 3. Fijar un _breakpoint_ y cargar la página en el navegador.
