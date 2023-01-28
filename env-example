@@ -17,12 +17,6 @@ MYSQL_DATABASE=dockerbox
 MYSQL_USER=dockerbox
 MYSQL_PASSWORD=12345Abcde
 
-# Depuración con Xdebug
-
-# Dirección IP del equipo local
-# En macOS se puede usar este gist para fijarla: https://gist.github.com/ralphschindler/535dc5916ccbd06f53c1b0ee5a868c93
-XDEBUG_REMOTE_HOST=10.254.254.254
-
 # Prefijo para los contenedores
 COMPOSE_PROJECT_NAME=dockerbox
 
