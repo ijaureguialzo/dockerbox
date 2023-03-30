@@ -9,23 +9,7 @@ WORKDIR /var/www/html
 
 # Install Additional dependencies
 RUN apk add --no-cache \
-    build-base linux-headers shadow nano curl \
-    php8 \
-    php8-fpm \
-    php8-common \
-    php8-pdo \
-    php8-pdo_mysql \
-    php8-mysqli \
-    php8-mbstring \
-    php8-xml \
-    php8-openssl \
-    php8-json \
-    php8-phar \
-    php8-zip \
-    php8-gd \
-    php8-dom \
-    php8-session \
-    php8-zlib
+    build-base linux-headers shadow nano curl
 
 # Add and Enable PHP-PDO Extenstions
 RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
@@ -38,7 +22,7 @@ RUN apk add --no-cache --virtual buildDeps autoconf \
     && docker-php-ext-enable redis \
     && apk del buildDeps
 
-RUN apk add --no-cache php8-intl icu-dev icu-data-full \
+RUN apk add --no-cache icu-dev icu-data-full \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl
 
@@ -69,8 +53,7 @@ RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev lib
   docker-php-ext-install -j${NPROC} gd && \
   apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
 
-RUN apk add --no-cache php8-exif \
-    && docker-php-ext-install exif \
+RUN docker-php-ext-install exif \
     && docker-php-ext-enable exif
 
 # # https://github.com/zgraveyard/php-7.1-xdebug-alpine
