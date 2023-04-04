@@ -33,6 +33,7 @@ Entorno de desarrollo para programación web con PHP en Docker.
    127.0.0.1	phpmyadmin.dockerbox.test
    127.0.0.1	phpredisadmin.dockerbox.test
    127.0.0.1	mailcatcher.dockerbox.test
+   127.0.0.1	vite.dockerbox.test
    ```
 
    > En macOS y Windows se
@@ -85,6 +86,7 @@ Entorno de desarrollo para programación web con PHP en Docker.
 - [phpMyAdmin](https://phpmyadmin.dockerbox.test)
 - [phpRedisAdmin](https://phpredisadmin.dockerbox.test)
 - [MailCatcher](https://mailcatcher.dockerbox.test)
+- [Vite](https://vite.dockerbox.test)
 
 ## Utilidades
 

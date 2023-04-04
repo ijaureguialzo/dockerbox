@@ -78,5 +78,6 @@ _urls: _header
 	@echo [phpMyAdmin] https://phpmyadmin.dockerbox.test
 	@echo [phpRedisAdmin] https://phpredisadmin.dockerbox.test
 	@echo [MailCatcher] https://mailcatcher.dockerbox.test
+	@echo [Vite] https://vite.dockerbox.test
 	@docker run --rm -v "$(CURDIR)/:/data" alpine:${ALPINE_VERSION} /bin/sh /data/utils/extra-sites-urls.sh
 	@echo --------------------------------------------------------
