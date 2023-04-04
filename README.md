@@ -25,15 +25,30 @@ Entorno de desarrollo para programación web con PHP en Docker.
    scoop install make
    ```
 
-3. Editar como root el fichero `/etc/hosts` (en macOS y Linux) o
-   en [Windows](https://www.adslzone.net/esenciales/windows-10/editar-archivo-host/) y añadir:
+3. Añadir las entradas necesarias al fichero _hosts_ del sistema:
 
-   ```text
-   127.0.0.1	dockerbox.test
-   127.0.0.1	phpmyadmin.dockerbox.test
-   127.0.0.1	phpredisadmin.dockerbox.test
-   127.0.0.1	mailcatcher.dockerbox.test
-   127.0.0.1	vite.dockerbox.test
+   En macOS y Linux:
+
+   ```shell
+   sudo bash -c '{
+   echo "127.0.0.1    dockerbox.test"
+   echo "127.0.0.1    phpmyadmin.dockerbox.test"
+   echo "127.0.0.1    phpredisadmin.dockerbox.test"
+   echo "127.0.0.1    mailcatcher.dockerbox.test"
+   echo "127.0.0.1    vite.dockerbox.test"
+   } >> /etc/hosts'
+   ```
+
+   En Windows (desde un terminal con privilegios de administrador):
+
+   ```powershell
+   (
+   echo 127.0.0.1    dockerbox.test
+   echo 127.0.0.1    phpmyadmin.dockerbox.test
+   echo 127.0.0.1    phpredisadmin.dockerbox.test
+   echo 127.0.0.1    mailcatcher.dockerbox.test
+   echo 127.0.0.1    vite.dockerbox.test
+   ) >> %SystemRoot%\System32\drivers\etc\hosts
    ```
 
    > En macOS y Windows se
