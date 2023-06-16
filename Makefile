@@ -35,9 +35,17 @@ _start-command:
 _start-command-mariadb:
 	@docker compose -f docker-compose.yml -f docker-compose.mariadb.yml up -d --remove-orphans
 
-start: _extra_sites _start-command _urls
+_mutagen-start:
+	@mutagen daemon start
+	@mutagen sync create --name=dockerbox-php sites docker://dockerbox-php-1/var/www/html --sync-mode=two-way-resolved --ignore-vcs -i .idea -i *.log -i supervisord.log --default-owner-beta=www-data --default-group-beta=www-data --default-file-mode=644 --default-directory-mode=755
+	@mutagen sync create --name=dockerbox-nginx sites docker://dockerbox-nginx-1/var/www/html --sync-mode=one-way-replica --ignore-vcs --default-file-mode-beta=644 --default-directory-mode-beta=755
 
-start-expose-mariadb: _extra_sites _start-command-mariadb _urls
+_mutagen-stop:
+	@mutagen sync terminate -a
+
+start: _extra_sites _start-command _mutagen-start _urls
+
+start-expose-mariadb: _extra_sites _start-command-mariadb _mutagen-start _urls
 
 _stop_web_containers:
 	@docker compose stop https-portal nginx
@@ -45,11 +53,13 @@ _stop_web_containers:
 reload: _stop_web_containers start
 
 stop:
+	-@$(MAKE) _mutagen-stop
 	@docker compose stop
 
 restart: stop start
 
 stop-all:
+	-@$(MAKE) _mutagen-stop
 	@docker stop $(shell docker ps -aq)
 
 workspace:
@@ -68,6 +78,7 @@ stats:
 	@docker stats
 
 clean:
+	-@$(MAKE) _mutagen-stop
 	@docker compose down -v --remove-orphans
 
 _urls: _header
