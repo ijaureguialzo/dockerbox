@@ -22,8 +22,11 @@ Entorno de desarrollo para programación web con PHP en Docker.
    Y después instalar los comandos necesarios:
 
    ```powershell
-   scoop install make
+   scoop install make mutagen
    ```
+
+   En macOS hay que [instalar mutagen](https://mutagen.io/documentation/introduction/installation)
+   mediante [Homebrew](https://brew.sh) y en Linux usando el gestor de paquetes del sistema.
 
 3. Añadir las entradas necesarias al fichero _hosts_ del sistema:
 
