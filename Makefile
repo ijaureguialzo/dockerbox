@@ -17,6 +17,7 @@ help: _header
 	@echo workspace
 	@echo build
 	@echo redis-cli / redis-flush
+	@echo mutagen-status
 	@echo stats
 	@echo clean
 	@echo --------------------------------------------------------
@@ -73,6 +74,9 @@ redis-cli:
 
 redis-flush:
 	@docker compose exec redis redis-cli flushall
+
+mutagen-status:
+	@mutagen sync list
 
 stats:
 	@docker stats
