@@ -90,6 +90,9 @@ RUN apk add --update --no-cache bash nano
 
 RUN docker-php-ext-install bcmath && docker-php-ext-enable bcmath
 
+# Variables de configuración extra de PHP
+COPY php/extra.ini /usr/local/etc/php/conf.d/extra.ini
+
 # Add UID '1000' to www-data
 RUN usermod -u 1000 www-data
 
