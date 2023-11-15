@@ -45,7 +45,7 @@ _mutagen-stop:
 	@mutagen daemon start
 	@mutagen sync terminate -a
 
-start: _extra_sites _start-command _mutagen-stop _mutagen-start _urls
+start: _extra_sites _mutagen-stop _start-command _mutagen-start _urls
 
 start-expose-mariadb: _extra_sites _start-command-mariadb _mutagen-start _urls
 
