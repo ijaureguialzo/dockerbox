@@ -51,7 +51,7 @@ start-expose-mariadb: _extra_sites _start-command-mariadb _mutagen-start _urls
 _stop_web_containers:
 	@docker compose stop https-portal nginx
 
-reload: _stop_web_containers start
+reload: _mutagen-stop _stop_web_containers start
 
 stop:
 	-@$(MAKE) _mutagen-stop
