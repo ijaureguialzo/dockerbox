@@ -45,14 +45,14 @@ _mutagen-stop:
 	@mutagen daemon start
 	@mutagen sync terminate -a
 
-start: _extra_sites _mutagen-stop _start-command _mutagen-start _urls
+start: _mutagen-stop _extra_sites _start-command _mutagen-start _urls
 
-start-expose-mariadb: _extra_sites _start-command-mariadb _mutagen-start _urls
+start-expose-mariadb: _mutagen-stop _extra_sites _start-command-mariadb _mutagen-start _urls
 
 _stop_web_containers:
 	@docker compose stop https-portal nginx
 
-reload: _mutagen-stop _stop_web_containers start
+reload: _mutagen-stop _extra_sites _stop_web_containers _start-command _mutagen-start _urls
 
 stop:
 	-@$(MAKE) _mutagen-stop
