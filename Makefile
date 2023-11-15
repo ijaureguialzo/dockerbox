@@ -42,9 +42,10 @@ _mutagen-start:
 	@mutagen sync create --name=dockerbox-nginx sites docker://dockerbox-nginx-1/var/www/html --sync-mode=one-way-replica --ignore-vcs --default-file-mode-beta=644 --default-directory-mode-beta=755
 
 _mutagen-stop:
+	@mutagen daemon start
 	@mutagen sync terminate -a
 
-start: _extra_sites _start-command _mutagen-start _urls
+start: _extra_sites _start-command _mutagen-stop _mutagen-start _urls
 
 start-expose-mariadb: _extra_sites _start-command-mariadb _mutagen-start _urls
 
