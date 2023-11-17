@@ -23,9 +23,9 @@ help: _header
 	@echo --------------------------------------------------------
 
 _header:
-	@echo ---------
-	@echo dockerbox
-	@echo ---------
+	@echo ---------------
+	@echo dockerbox $(shell git describe --tags)
+	@echo ---------------
 
 _extra_sites:
 	@docker run --rm -v "$(CURDIR)/:/data" alpine:${ALPINE_VERSION} /bin/sh -c "/bin/sh /data/utils/extra-sites-nginx-conf.sh && sed -i '/^EXTRA_SITES/d' /data/.env && /bin/sh /data/utils/extra-sites-env.sh"
