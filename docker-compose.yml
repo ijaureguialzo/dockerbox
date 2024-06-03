@@ -9,7 +9,7 @@ services:
       DOMAINS: >
         dockerbox.test -> http://nginx:80,
         phpmyadmin.dockerbox.test -> http://phpmyadmin:80,
-        mailcatcher.dockerbox.test -> http://mailcatcher:1080,
+        mailpit.dockerbox.test -> http://mailpit:8025,
         phpredisadmin.dockerbox.test -> http://phpredisadmin:80,
         vite.dockerbox.test -> http://php:5173,
         ${EXTRA_SITES}
@@ -30,7 +30,7 @@ services:
     depends_on:
       - nginx
       - phpmyadmin
-      - mailcatcher
+      - mailpit
 
   mariadb:
     image: mariadb:${MARIADB_VERSION}
@@ -102,8 +102,8 @@ services:
     expose:
       - 6379
 
-  mailcatcher:
-    image: stpaquet/alpinemailcatcher:${MAILCATCHER_VERSION:-latest}
+  mailpit:
+    image: axllent/mailpit:${MAILPIT_VERSION:-latest}
 
   phpredisadmin:
     image: erikdubbelboer/phpredisadmin:${PHPREDISADMIN_VERSION:-latest}
