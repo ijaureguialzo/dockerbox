@@ -2,6 +2,7 @@ services:
 
   https-portal:
     image: steveltn/https-portal:${HTTPS_PORTAL_VERSION}
+    stop_signal: SIGINT
     environment:
       # noinspection HttpUrlsUsage
       DOMAINS: >
