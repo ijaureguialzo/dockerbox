@@ -22,9 +22,9 @@ help: _header
 	@echo --------------------------------------------------------
 
 _header:
-	@echo ---------------
-	@echo dockerbox $(shell git describe --tags)
-	@echo ---------------
+	@printf -- "-%.0s" {1..18}; echo ""
+	@printf "dockerbox %8s\n" $(shell git describe --tags)
+	@printf -- "-%.0s" {1..18}; echo ""
 
 _extra_sites:
 	@docker run --rm -v "$(CURDIR)/:/data" alpine:${ALPINE_VERSION} /bin/sh -c "/bin/sh /data/utils/extra-sites-nginx-conf.sh && sed -i '/^EXTRA_SITES/d' /data/.env && /bin/sh /data/utils/extra-sites-env.sh"
