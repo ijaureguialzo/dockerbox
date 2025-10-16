@@ -17,7 +17,6 @@ help: _header
 	@echo workspace
 	@echo build
 	@echo redis-cli / redis-flush
-	@echo mutagen-status
 	@echo stats
 	@echo clean
 	@echo --------------------------------------------------------
@@ -36,32 +35,21 @@ _start-command:
 _start-command-mariadb:
 	@docker compose -f docker-compose.yml -f docker-compose.mariadb.yml up -d --remove-orphans
 
-_mutagen-start:
-	@mutagen daemon start
-	@mutagen sync create --name=dockerbox-php sites docker://dockerbox-php-1/var/www/html --sync-mode=two-way-resolved --ignore-vcs -i .idea -i *.log -i supervisord.log --default-owner-beta=www-data --default-group-beta=www-data --default-file-mode=644 --default-directory-mode=755
-	@mutagen sync create --name=dockerbox-nginx sites docker://dockerbox-nginx-1/var/www/html --sync-mode=one-way-replica --ignore-vcs --default-file-mode-beta=644 --default-directory-mode-beta=755
+start: _extra_sites _start-command _urls
 
-_mutagen-stop:
-	@mutagen daemon start
-	@mutagen sync terminate -a
-
-start: _mutagen-stop _extra_sites _start-command _mutagen-start _urls
-
-start-expose-mariadb: _mutagen-stop _extra_sites _start-command-mariadb _mutagen-start _urls
+start-expose-mariadb: _extra_sites _start-command-mariadb _urls
 
 _stop_web_containers:
 	@docker compose stop https-portal nginx
 
-reload: _mutagen-stop _extra_sites _stop_web_containers _start-command _mutagen-start _urls
+reload: _extra_sites _stop_web_containers _start-command _urls
 
 stop:
-	-@$(MAKE) _mutagen-stop
 	@docker compose stop
 
 restart: stop start
 
 stop-all:
-	-@$(MAKE) _mutagen-stop
 	@docker stop $(shell docker ps -aq)
 
 workspace:
@@ -76,14 +64,10 @@ redis-cli:
 redis-flush:
 	@docker compose exec redis redis-cli flushall
 
-mutagen-status:
-	@mutagen sync list
-
 stats:
 	@docker stats
 
 clean:
-	-@$(MAKE) _mutagen-stop
 	@docker compose down -v --remove-orphans
 
 _urls: _header
